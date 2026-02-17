@@ -6,6 +6,9 @@
 // Usage: node scripts/ami-smoke-test.js
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Force local file storage during smoke tests — never hit a real database at build time.
+delete process.env.DATABASE_URL;
+
 const fs = require('node:fs');
 const path = require('node:path');
 
