@@ -722,6 +722,59 @@
         }
         .dl-btn-secondary:hover { border-color: var(--border-hover); color: #fff; }
 
+        /* ==================== SECTION RAIL ==================== */
+        .section-rail {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 12px 0;
+        }
+        .section-rail a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px 6px 10px;
+            text-decoration: none;
+            font-size: 10px;
+            font-family: var(--font-mono);
+            color: var(--text-3);
+            opacity: 0.4;
+            transition: opacity 0.2s, color 0.2s;
+            white-space: nowrap;
+            letter-spacing: 0.03em;
+        }
+        .section-rail a:hover {
+            opacity: 1;
+            color: var(--text-2);
+        }
+        .section-rail a.active {
+            opacity: 1;
+            color: var(--cyan);
+        }
+        .section-rail a .rail-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--text-3);
+            flex-shrink: 0;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .section-rail a.active .rail-dot {
+            background: var(--cyan);
+            transform: scale(1.4);
+        }
+        .section-rail a:hover .rail-dot {
+            background: var(--text-2);
+        }
+        @media (max-width: 900px) {
+            .section-rail { display: none; }
+        }
+
         /* ==================== FULL REPORT ==================== */
         .report-wrapper {
             max-width: 1200px;
@@ -1316,17 +1369,23 @@
 <header class="header">
     <a href="/" class="logo">Autonomy Index</a>
     <nav class="nav-menu">
-        <a href="/#features" class="nav-link" data-scroll="features">Main Report</a>
-        <a href="#insights" class="nav-link active" data-scroll="insights">Key Insights</a>
-        <a href="#charts" class="nav-link" data-scroll="charts">Data</a>
-        <a href="#landscape" class="nav-link" data-scroll="landscape">Landscape</a>
-        <a href="#indices" class="nav-link" data-scroll="indices">Indices</a>
-        <a href="#playbooks" class="nav-link" data-scroll="playbooks">Playbooks</a>
         <a href="/methodology" class="nav-link">Methodology</a>
+        <a href="/ami-systems" class="nav-link">AMI</a>
         <a href="/ami-submit" class="nav-link">Submit</a>
         <a href="/AGENTS_2026_PREMIUM_REPORT.html" class="dl-btn dl-btn-primary" download="AI_Tools_2026_Premium_Report.html" style="padding:6px 14px;font-size:12px;">↓ Premium Report</a>
     </nav>
 </header>
+
+<!-- ==================== SECTION RAIL ==================== -->
+<nav class="section-rail" id="sectionRail">
+    <a href="#insights"><span class="rail-dot"></span>Insights</a>
+    <a href="#charts"><span class="rail-dot"></span>Data</a>
+    <a href="#indices"><span class="rail-dot"></span>Indices</a>
+    <a href="#landscape"><span class="rail-dot"></span>Landscape</a>
+    <a href="#frameworks"><span class="rail-dot"></span>Frameworks</a>
+    <a href="#playbooks"><span class="rail-dot"></span>Playbooks</a>
+    <a href="#strategy"><span class="rail-dot"></span>Strategy</a>
+</nav>
 
 <!-- ==================== LIVE INTELLIGENCE TAPE ==================== -->
 <div class="live-tape" id="liveTape">
@@ -1373,6 +1432,8 @@
     <a href="/AGENTS_2026_PREMIUM_REPORT.html" class="dl-btn dl-btn-primary" download="AI_Tools_2026_Premium_Report.html">Premium Report (.html)</a>
     <a href="/AGENTS_2026_SOURCES.md" class="dl-btn dl-btn-secondary" download>Sources & Citations</a>
     <a href="/AGENTS_2026_CHART_DATA.csv" class="dl-btn dl-btn-secondary" download>Raw Data (.csv)</a>
+    <a href="/download/ami-v1-kit/ami-v1-rubric.md" class="dl-btn dl-btn-secondary" download>AMI Rubric (.md)</a>
+    <a href="/download/ami-v1-kit.zip" class="dl-btn dl-btn-secondary" download>Assessment Kit (.zip)</a>
 </div>
 
 <!-- ==================== KEY INSIGHTS SNAPSHOT ==================== -->
@@ -2750,6 +2811,43 @@ function initLiveTape() {
 }
 
 initLiveTape();
+</script>
+
+<script>
+// ==================== SECTION RAIL ====================
+(function() {
+    const rail = document.getElementById('sectionRail');
+    if (!rail) return;
+    const links = rail.querySelectorAll('a');
+    const sectionIds = Array.from(links).map(a => a.getAttribute('href').slice(1));
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    // Active state via IntersectionObserver
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const link = rail.querySelector(`a[href="#${entry.target.id}"]`);
+                if (link) link.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Smooth scroll without hash in URL
+    rail.addEventListener('click', e => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        const id = link.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', window.location.pathname);
+        }
+    });
+})();
 </script>
 
 </body>
