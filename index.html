@@ -3,41 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools 2026 Landscape Report - Bleeding Edge Intelligence</title>
-    <meta name="description" content="Complete analysis of 100+ AI tools across LLMs, image generation, video, voice, and agents. Updated February 2026 with market data and pricing.">
+    <title>Agents & Autonomous Systems 2026 — AI Tools Landscape Report</title>
+    <meta name="description" content="Competitive landscape intelligence: OpenClaw, Anthropic agents, and local-first autonomous systems. Interactive charts, framework comparisons, and practical playbooks. February 2026 edition.">
+    <meta property="og:title" content="AI Agent Landscape 2026 — Interactive Intelligence Report">
+    <meta property="og:description" content="6 interactive charts, competitive matrices, framework comparisons, and step-by-step agent playbooks. Data-driven analysis of OpenClaw, Anthropic, and 9+ agent frameworks.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --cyan: #06b6d4;
+            --cyan-dim: rgba(6,182,212,0.15);
+            --cyan-glow: rgba(6,182,212,0.3);
+            --green: #34d59a;
+            --green-dim: rgba(52,213,154,0.15);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245,158,11,0.15);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,0.15);
+            --purple: #a78bfa;
+            --purple-dim: rgba(167,139,250,0.15);
+            --rose: #fb7185;
+            --surface-0: #000;
+            --surface-1: #0a0a0a;
+            --surface-2: #111;
+            --surface-3: #1a1a1a;
+            --surface-4: #222;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-1: #f5f5f5;
+            --text-2: #a1a1a1;
+            --text-3: #666;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
         }
 
-        html {
-            color-scheme: dark;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: dark; scroll-behavior: smooth; }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            line-height: 1.6;
+            font-family: var(--font-body);
+            background: var(--surface-0);
+            color: var(--text-1);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
+        /* ==================== HEADER ==================== */
         .header {
             position: sticky;
             top: 0;
-            z-index: 50;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1rem 2rem;
+            z-index: 100;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,1674 +71,2448 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-family: var(--font-display);
+            font-size: 22px;
             font-weight: 700;
-            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
+            background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #a1a1a1;
             text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            position: relative;
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #34d59a, #0891b2);
-            transition: width 0.3s ease;
+        .nav-menu { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-link {
+            color: var(--text-2);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.02em;
         }
-
-        .nav-link:hover {
-            color: #ffffff;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
-            color: #000;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: left 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(52, 213, 154, 0.3);
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
+        .nav-link:hover { color: #fff; }
+        .nav-link.active { color: var(--cyan); }
+        .back-link {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
+            gap: 6px;
+            color: var(--green);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            padding: 5rem 2rem 2rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(52, 213, 154, 0.1), transparent 70%);
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(6,182,212,0.06) 0%, transparent 70%);
             pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero-badge {
+        .badge {
             display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid rgba(52, 213, 154, 0.3);
+            padding: 5px 14px;
+            background: var(--cyan-dim);
+            border: 1px solid rgba(6,182,212,0.2);
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
-            margin-bottom: 2rem;
-            background: rgba(52, 213, 154, 0.05);
-            color: #34d59a;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero-title {
-            font-size: 72px;
-            font-weight: 700;
-            line-height: 1.1;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
         }
 
-        .hero-subtitle {
-            font-size: 18px;
-            color: #a1a1a1;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: #fff;
         }
 
-        .hero-ctas {
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-meta {
             display: flex;
-            gap: 1rem;
             justify-content: center;
+            gap: 2rem;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
-        /* Features Grid */
-        .features {
-            padding: 6rem 2rem;
-            max-width: 1400px;
+        .meta-item {
+            font-size: 12px;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .meta-item span { color: var(--text-2); font-weight: 500; }
+
+        /* ==================== SECTION CONTAINERS ==================== */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .section-header p {
+            color: var(--text-2);
+            font-size: 0.95rem;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .features-title {
-            text-align: center;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            color: #ffffff;
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--cyan);
+            margin-bottom: 0.75rem;
         }
 
-        .features-grid {
+        .divider {
+            border: none;
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* ==================== KEY INSIGHTS SNAPSHOT ==================== */
+        .insights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1rem;
         }
 
-        .feature-card {
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .insight-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            background: rgba(20, 20, 20, 0.5);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            transition: border-color 0.3s, transform 0.2s;
             position: relative;
             overflow: hidden;
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #34d59a, transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .insight-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
         }
 
-        .feature-card:hover {
-            border-color: rgba(52, 213, 154, 0.3);
-            background: rgba(20, 20, 20, 0.8);
-            transform: translateY(-4px);
+        .insight-card .insight-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #34d59a20, #0891b220);
-            border: 1px solid rgba(52, 213, 154, 0.2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 24px;
-        }
-
-        .feature-title {
-            font-size: 18px;
+        .insight-card h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #ffffff;
+            margin-bottom: 0.5rem;
+            color: #fff;
         }
 
-        .feature-desc {
-            font-size: 14px;
-            color: #a1a1a1;
+        .insight-card p {
+            font-size: 0.85rem;
+            color: var(--text-2);
             line-height: 1.6;
         }
 
-        /* Tools Grid */
-        .tools-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(52, 213, 154, 0.05) 100%);
-            max-width: 1400px;
-            margin: 0 auto;
+        .insight-card .tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 0.75rem;
         }
 
-        .tools-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            color: #ffffff;
-        }
+        .tag-confirmed { background: var(--green-dim); color: var(--green); }
+        .tag-inferred { background: var(--amber-dim); color: var(--amber); }
+        .tag-speculative { background: var(--purple-dim); color: var(--purple); }
 
-        .tools-grid {
+        .insight-accent-cyan .insight-number { color: var(--cyan); }
+        .insight-accent-green .insight-number { color: var(--green); }
+        .insight-accent-amber .insight-number { color: var(--amber); }
+        .insight-accent-red .insight-number { color: var(--red); }
+        .insight-accent-purple .insight-number { color: var(--purple); }
+
+        /* ==================== STATS STRIP ==================== */
+        .stats-strip {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .stat-cell {
+            background: var(--surface-2);
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-cell .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .stat-cell .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        .stat-cell .stat-context {
+            font-size: 0.65rem;
+            color: var(--text-3);
+            margin-top: 4px;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* ==================== CHART CONTAINERS ==================== */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
-        .tool-card {
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            background: rgba(10, 10, 10, 0.8);
-            transition: all 0.3s ease;
-            cursor: pointer;
+        @media (max-width: 900px) {
+            .charts-grid { grid-template-columns: 1fr; }
         }
 
-        .tool-card:hover {
-            border-color: rgba(52, 213, 154, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(52, 213, 154, 0.1);
-        }
-
-        .tool-name {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .tool-category {
-            display: inline-block;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            background: rgba(52, 213, 154, 0.1);
-            color: #34d59a;
-            margin-bottom: 1rem;
-        }
-
-        .tool-desc {
-            font-size: 13px;
-            color: #a1a1a1;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .tool-price {
-            font-size: 12px;
-            color: #0891b2;
-            font-weight: 600;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 6rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-card {
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .chart-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            text-align: center;
-            background: rgba(20, 20, 20, 0.5);
-            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            position: relative;
         }
 
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .chart-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .chart-card h3 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #fff;
+        }
+
+        .chart-card .chart-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-3);
+            margin-bottom: 1rem;
+        }
+
+        .chart-card .chart-source {
+            font-size: 0.7rem;
+            color: var(--text-3);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .chart-card canvas {
+            max-height: 320px;
+        }
+
+        /* ==================== 2x2 MATRIX ==================== */
+        .matrix-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            aspect-ratio: 1;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 3px;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .matrix-quadrant {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .matrix-quadrant h4 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
-            font-size: 14px;
-            color: #a1a1a1;
+        .matrix-quadrant .matrix-items {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-2);
+            line-height: 1.8;
         }
 
-        /* CTA Section */
-        .final-cta {
-            padding: 6rem 2rem;
+        .matrix-quadrant .matrix-items li::before {
+            content: '→ ';
+            color: var(--text-3);
+        }
+
+        .q-tl { background: rgba(6,182,212,0.08); }
+        .q-tl h4 { color: var(--cyan); }
+        .q-tr { background: rgba(52,213,154,0.08); }
+        .q-tr h4 { color: var(--green); }
+        .q-bl { background: rgba(167,139,250,0.08); }
+        .q-bl h4 { color: var(--purple); }
+        .q-br { background: rgba(245,158,11,0.08); }
+        .q-br h4 { color: var(--amber); }
+
+        .matrix-label-y {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: rotate(-90deg) translateX(-50%);
+            transform-origin: left center;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .matrix-label-x {
             text-align: center;
-            max-width: 1400px;
-            margin: 0 auto;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.75rem;
         }
 
-        .final-cta-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
+        .matrix-wrapper {
+            position: relative;
+            padding-left: 50px;
         }
 
-        .final-cta-subtitle {
-            font-size: 18px;
-            color: #a1a1a1;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 4rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(0, 0, 0, 0.95);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
+        /* ==================== ECOSYSTEM MAP ==================== */
+        .ecosystem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 1rem;
         }
 
-        .footer-section h3 {
+        .eco-column {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+
+        .eco-column h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .eco-column ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-2);
+            line-height: 2;
+        }
+
+        .eco-column ul li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .eco-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ==================== COMPARISON TABLE ==================== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .comparison-table th {
+            font-family: var(--font-display);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid var(--border-hover);
+            color: var(--text-2);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: sticky;
+            top: 64px;
+            background: var(--surface-2);
+            z-index: 5;
+        }
+
+        .comparison-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-2);
+            vertical-align: top;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--text-1);
+        }
+
+        .score-bar {
+            display: inline-flex;
+            gap: 3px;
+            align-items: center;
+        }
+
+        .score-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        .score-dot.filled { background: var(--cyan); }
+        .score-dot.empty { background: var(--surface-4); }
+
+        /* ==================== PLAYBOOK TABS ==================== */
+        .playbook-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .playbook-tab {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-3);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            font-family: var(--font-body);
+        }
+
+        .playbook-tab:hover { color: var(--text-2); }
+        .playbook-tab.active {
+            color: var(--cyan);
+            border-bottom-color: var(--cyan);
+        }
+
+        .playbook-content {
+            display: none;
+        }
+        .playbook-content.active { display: block; }
+
+        .code-block {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: var(--text-2);
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            white-space: pre;
+        }
+
+        .code-block .comment { color: var(--text-3); }
+        .code-block .keyword { color: var(--purple); }
+        .code-block .string { color: var(--green); }
+        .code-block .function { color: var(--cyan); }
+
+        .tradeoff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tradeoff-box {
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .tradeoff-pros {
+            background: var(--green-dim);
+            border: 1px solid rgba(52,213,154,0.2);
+        }
+        .tradeoff-cons {
+            background: var(--red-dim);
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+
+        .tradeoff-box h5 {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .tradeoff-pros h5 { color: var(--green); }
+        .tradeoff-cons h5 { color: var(--red); }
+
+        .tradeoff-box ul {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-2);
+            line-height: 1.7;
+        }
+
+        .tradeoff-box ul li::before {
+            content: '• ';
+            color: var(--text-3);
+        }
+
+        /* ==================== STRATEGY CARDS ==================== */
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .strategy-grid { grid-template-columns: 1fr; }
+            .tradeoff-grid { grid-template-columns: 1fr; }
+        }
+
+        .strategy-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .strategy-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .strategy-card ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-2);
+            line-height: 1.8;
+        }
+
+        .strategy-card ul li::before {
+            content: '→ ';
+            color: var(--cyan);
+        }
+
+        /* ==================== DOWNLOAD BAR ==================== */
+        .download-bar {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1.5rem 2rem;
+            background: var(--surface-1);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: var(--font-body);
+        }
+
+        .dl-btn-primary {
+            background: var(--cyan);
+            color: #000;
+        }
+        .dl-btn-primary:hover { background: #22d3ee; transform: translateY(-1px); }
+
+        .dl-btn-secondary {
+            background: var(--surface-3);
+            color: var(--text-2);
+            border: 1px solid var(--border);
+        }
+        .dl-btn-secondary:hover { border-color: var(--border-hover); color: #fff; }
+
+        /* ==================== FULL REPORT ==================== */
+        .report-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .report-wrapper { grid-template-columns: 1fr; }
+            .toc { display: none; }
+        }
+
+        .toc {
+            position: sticky;
+            top: 80px;
+            align-self: start;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            padding-right: 1rem;
+            font-size: 12px;
+        }
+
+        .toc a {
+            display: block;
+            padding: 4px 0 4px 0;
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.2s;
+            line-height: 1.5;
+        }
+        .toc a:hover { color: var(--text-2); }
+        .toc a.active { color: var(--cyan); }
+        .toc .toc-h3 { padding-left: 1rem; font-size: 11px; }
+
+        .report-content {
+            min-width: 0;
+        }
+
+        .report-content h1 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1rem; color: #fff; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        .report-content h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin: 2rem 0 0.75rem; color: #fff; }
+        .report-content h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text-1); }
+        .report-content p { margin-bottom: 1rem; color: var(--text-2); }
+        .report-content ul, .report-content ol { margin: 0.5rem 0 1rem 1.5rem; color: var(--text-2); }
+        .report-content li { margin-bottom: 0.25rem; }
+        .report-content strong { color: var(--text-1); }
+        .report-content code { font-family: var(--font-mono); background: var(--surface-3); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+        .report-content pre { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+        .report-content pre code { background: transparent; padding: 0; font-size: 0.85rem; line-height: 1.6; }
+        .report-content blockquote { border-left: 3px solid var(--cyan); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--surface-2); border-radius: 0 6px 6px 0; }
+        .report-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+        .report-content th { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--border-hover); color: var(--text-2); font-weight: 600; }
+        .report-content td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); }
+        .report-content hr { border: none; height: 1px; background: var(--border); margin: 2rem 0; }
+        .report-content a { color: var(--cyan); text-decoration: none; }
+        .report-content a:hover { text-decoration: underline; }
+        .report-content img { max-width: 100%; border-radius: 8px; }
+
+        /* ==================== TOGGLE ==================== */
+        .report-toggle {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            font-family: var(--font-body);
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .footer-link {
+        .toggle-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .full-report-section {
+            display: none;
+        }
+        .full-report-section.expanded {
             display: block;
-            font-size: 13px;
-            color: #a1a1a1;
-            text-decoration: none;
-            margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
         }
 
-        .footer-link:hover {
-            color: #34d59a;
+        /* ==================== FOOTER ==================== */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-3);
+            font-size: 0.8rem;
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 2rem;
+        .footer a { color: var(--text-2); text-decoration: none; }
+        .footer a:hover { color: var(--cyan); }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 640px) {
+            .hero { padding: 3rem 1rem 1.5rem; }
+            .section { padding: 2rem 1rem; }
+            .insights-grid { grid-template-columns: 1fr; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .ecosystem-grid { grid-template-columns: 1fr 1fr; }
+            .nav-menu { gap: 0.75rem; }
+            .nav-link { font-size: 11px; }
+            .matrix-container { aspect-ratio: auto; }
+            .matrix-quadrant { padding: 1rem; }
+            .idx-grid { grid-template-columns: 1fr !important; }
+            .idx-header-row { flex-direction: column; gap: 0.5rem; }
+            .idx-legend { flex-direction: column; }
+        }
+
+        /* ==================== INDEX SNAPSHOT ==================== */
+        .idx-section {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .idx-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--green), var(--purple));
+        }
+        .idx-header-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
-            color: #666;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .idx-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .idx-version {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-3);
+            padding: 3px 10px;
+            background: var(--surface-3);
+            border-radius: 4px;
+        }
+        .idx-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+        }
+        .idx-subtitle a { color: var(--cyan); text-decoration: none; font-weight: 500; }
+        .idx-subtitle a:hover { text-decoration: underline; }
+
+        .idx-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .idx-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .idx-card:hover { border-color: var(--border-hover); }
+        .idx-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .idx-fw-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .idx-fw-cat {
+            font-size: 10px;
+            color: var(--text-3);
+            padding: 2px 8px;
+            background: var(--surface-3);
+            border-radius: 4px;
+        }
+        .idx-scores {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+        .idx-score-block { text-align: center; }
+        .idx-score-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 4px;
+        }
+        .idx-score-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .idx-score-tag {
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 3px;
+            letter-spacing: 0.02em;
+        }
+        .idx-grade-A { color: var(--green); }
+        .idx-grade-B { color: var(--cyan); }
+        .idx-grade-C { color: var(--amber); }
+        .idx-grade-D { color: var(--red); }
+        .idx-risk-Low { color: var(--green); }
+        .idx-risk-Medium { color: var(--amber); }
+        .idx-risk-High { color: var(--rose); }
+        .idx-risk-Critical { color: var(--red); }
+        .idx-momentum-Rising { color: var(--green); }
+        .idx-momentum-Stable { color: var(--cyan); }
+        .idx-momentum-Declining { color: var(--red); }
+
+        .idx-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .idx-legend-item {
+            font-size: 11px;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .idx-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
         }
 
-        /* Responsive */
+        /* ==================== FRAMEWORK EXPANDERS ==================== */
+        .fw-expander {
+            display: none;
+        }
+        .fw-expander.open {
+            display: table-row;
+        }
+        .fw-expander-cell {
+            padding: 1rem 1rem 1.25rem !important;
+            background: var(--surface-1);
+            border-bottom: 1px solid var(--border);
+        }
+        .fw-expander-inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 42px;
-            }
+            .fw-expander-inner { grid-template-columns: 1fr; }
+        }
+        .fw-exp-col h5 {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 0.5rem;
+        }
+        .fw-exp-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-2);
+        }
+        .fw-exp-col li {
+            padding: 2px 0;
+            line-height: 1.5;
+        }
+        .fw-exp-col li::before {
+            margin-right: 4px;
+        }
+        .fw-idx-strip {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .fw-idx-mini {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: var(--surface-3);
+        }
+        .expand-trigger {
+            cursor: pointer;
+            user-select: none;
+        }
+        .expand-trigger td:first-child::after {
+            content: ' ▸';
+            font-size: 10px;
+            color: var(--text-3);
+            transition: transform 0.2s;
+        }
+        .expand-trigger.expanded td:first-child::after {
+            content: ' ▾';
+            color: var(--cyan);
+        }
 
-            .features-title,
-            .tools-title {
-                font-size: 32px;
-            }
+        /* ==================== COPY CITATION ==================== */
+        .cite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-3);
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .cite-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+        .cite-btn.copied {
+            border-color: var(--green);
+            color: var(--green);
+        }
 
-            .nav-menu {
-                gap: 1.5rem;
-            }
+        /* ==================== CHANGELOG ==================== */
+        .changelog-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-3);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .changelog-bar a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .changelog-bar a:hover { text-decoration: underline; }
+        .cl-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cl-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+        }
 
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        /* ==================== WATCH BADGE ==================== */
+        .watch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">AI Tools 2026</div>
-        <nav class="nav-menu">
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#tools" class="nav-link">Tools</a>
-            <a href="#stats" class="nav-link">Market</a>
-            <a href="/agents-2026" class="nav-link" style="color: #06b6d4; font-weight: 600;">🤖 Agents 2026</a>
-            <a href="AI_Tools_2026_Landscape_Report_PREMIUM.pdf" download class="cta-button" style="text-decoration: none; display: inline-block;">📥 Download Report</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">February 16, 2026 Edition</div>
-            <h1 class="hero-title">The 2026 AI Landscape Report</h1>
-            <p class="hero-subtitle">Comprehensive analysis of 100+ bleeding-edge AI tools, market trends, and pricing across LLMs, image generation, video, voice, and autonomous agents.</p>
-            <div class="hero-ctas">
-                <button class="cta-button" onclick="document.getElementById('tools').scrollIntoView({behavior: 'smooth'})">Explore Tools</button>
-                <button class="cta-button" style="background: transparent; color: #34d59a; border: 1px solid rgba(52, 213, 154, 0.3);" onclick="alert('Email capture form integration coming soon')">Subscribe</button>
-            </div>
-        </div>
-    </section>
+<!-- ==================== HEADER ==================== -->
+<header class="header">
+    <a href="/" class="logo">AI Tools Report</a>
+    <nav class="nav-menu">
+        <a href="/#features" class="nav-link">Main Report</a>
+        <a href="#insights" class="nav-link active">Key Insights</a>
+        <a href="#charts" class="nav-link">Data</a>
+        <a href="#landscape" class="nav-link">Landscape</a>
+        <a href="#indices" class="nav-link">Indices</a>
+        <a href="#playbooks" class="nav-link">Playbooks</a>
+        <a href="/methodology" class="nav-link" style="color:var(--text-3);">Methodology</a>
+        <a href="/AGENTS_2026_UPDATE.md" class="dl-btn dl-btn-primary" download style="padding:6px 14px;font-size:12px;">↓ Download</a>
+    </nav>
+</header>
 
-    <!-- Features -->
-    <section class="features" id="features">
-        <h2 class="features-title">Why This Report Matters</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <div class="feature-title">Market Intelligence</div>
-                <div class="feature-desc">$2.02T AI market breakdown with detailed segment analysis and growth projections through 2026.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Bleeding Edge</div>
-                <div class="feature-desc">GPT-5, Claude Opus 4.6, Sora 2, Veo 3.1 - all released within the last 6 months with real-world benchmarks.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <div class="feature-title">100+ Tools Analyzed</div>
-                <div class="feature-desc">LLMs, image generation, video, voice AI, code assistants, automation platforms, and autonomous agents.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <div class="feature-title">Current Pricing</div>
-                <div class="feature-desc">Up-to-date pricing tiers, free trials, and enterprise options for every tool reviewed.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <div class="feature-title">Trend Analysis</div>
-                <div class="feature-desc">AI agents eating the stack, open-source renaissance, multimodal everything, reasoning as standard.</div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⏱️</div>
-                <div class="feature-title">Real-Time Voice</div>
-                <div class="feature-desc">ElevenLabs achieves 75ms latency - breakthrough enabling real-time voice AI conversations.</div>
-            </div>
-        </div>
-    </section>
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+    <div class="badge">February 2026 Edition</div>
+    <h1>Agents & Autonomous Systems:<br>The 2026 Competitive Landscape</h1>
+    <p>Data-driven intelligence on agent frameworks, autonomous systems, and the structural shift defining who owns the AI execution layer. 6 interactive charts. 9+ frameworks compared. 3 implementation playbooks.</p>
+    <div class="hero-meta">
+        <div class="meta-item">📅 <span>Feb 16, 2026</span></div>
+        <div class="meta-item">📊 <span>38 Sources Cited</span></div>
+        <div class="meta-item">🏷️ <span>CONFIRMED + INFERRED + SPECULATIVE</span></div>
+        <div class="meta-item">📄 <span>722 Lines</span></div>
+    </div>
+</section>
 
-    <!-- Tools Showcase -->
-    <section class="tools-section" id="tools">
-        <h2 class="tools-title">Featured AI Tools (Sample)</h2>
-        <div class="tools-grid">
-            <!-- LLMs -->
-            <div class="tool-card">
-                <div class="tool-category">LLM</div>
-                <div class="tool-name">ChatGPT (GPT-5)</div>
-                <div class="tool-desc">OpenAI's latest with advanced reasoning, 128K context, function calling, vision capabilities.</div>
-                <div class="tool-price">$20/month Pro | $200/month Enterprise</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">LLM</div>
-                <div class="tool-name">Claude Opus 4.6</div>
-                <div class="tool-desc">Anthropic's newest model (Feb 5, 2026) with superior reasoning and safety alignment.</div>
-                <div class="tool-price">$20/month via Claude.ai | API pricing available</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">LLM</div>
-                <div class="tool-name">Google Gemini 3.0</div>
-                <div class="tool-desc">Google's multimodal AI with code generation, image understanding, and real-time processing.</div>
-                <div class="tool-price">Free tier | $20/month Premium</div>
-            </div>
-
-            <!-- Image Generation -->
-            <div class="tool-card">
-                <div class="tool-category">Image Gen</div>
-                <div class="tool-name">FLUX (Open Source)</div>
-                <div class="tool-desc">Revolutionary open-source image generation rivaling DALL-E 3. FREE and locally runnable.</div>
-                <div class="tool-price">FREE | Open source</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">Image Gen</div>
-                <div class="tool-name">Midjourney v6.1</div>
-                <div class="tool-desc">Professional-grade image generation with style transfer and fine-tuning capabilities.</div>
-                <div class="tool-price">$10-96/month based on usage</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">Image Gen</div>
-                <div class="tool-name">DALL-E 3 (Deprecated)</div>
-                <div class="tool-desc">OpenAI's older model. Deprecated May 12, 2026. Replaced by GPT-5 vision.</div>
-                <div class="tool-price">No longer available</div>
-            </div>
-
-            <!-- Video Generation -->
-            <div class="tool-card">
-                <div class="tool-category">Video Gen</div>
-                <div class="tool-name">Sora 2</div>
-                <div class="tool-desc">OpenAI's breakthrough video model. Broadcast-quality 60fps output. Highest fidelity available.</div>
-                <div class="tool-price">$500+/month (limited beta)</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">Video Gen</div>
-                <div class="tool-name">Google Veo 3.1</div>
-                <div class="tool-desc">Physics-based video generation with realistic motion simulation and control.</div>
-                <div class="tool-price">$20-100/month via Google Labs</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">Video Gen</div>
-                <div class="tool-name">Runway Gen 4.5</div>
-                <div class="tool-desc">Professional video editing AI with motion control and multi-shot sequences.</div>
-                <div class="tool-price">Free tier | $12-96/month Pro</div>
-            </div>
-
-            <!-- Voice AI -->
-            <div class="tool-card">
-                <div class="tool-category">Voice AI</div>
-                <div class="tool-name">ElevenLabs Turbo</div>
-                <div class="tool-desc">75ms latency breakthrough - enabling true real-time voice conversations. 32 languages.</div>
-                <div class="tool-price">Free tier | $99-1000/month</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">Voice AI</div>
-                <div class="tool-name">OpenAI Whisper API</div>
-                <div class="tool-desc">Industry standard speech-to-text with 99%+ accuracy across 99 languages.</div>
-                <div class="tool-price">$0.02 per minute</div>
-            </div>
-            <div class="tool-card">
-                <div class="tool-category">AI Agents</div>
-                <div class="tool-name">Anthropic Claude Agent</div>
-                <div class="tool-desc">Claude as autonomous agent with tool use, planning, and agentic loops (23% adoption rate).</div>
-                <div class="tool-price">API pricing | $20/month Claude.ai Pro</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats" id="stats">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">$2.02T</div>
-                <div class="stat-label">Total AI Market 2026</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Tools Analyzed</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">23%</div>
-                <div class="stat-label">AI Agent Adoption Rate</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">75ms</div>
-                <div class="stat-label">Real-Time Voice Latency</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW: Agents 2026 Report Banner -->
-    <section style="padding: 3rem 2rem; background: linear-gradient(135deg, rgba(6, 182, 212, 0.06) 0%, rgba(52, 213, 154, 0.04) 100%); border-top: 1px solid rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.15);">
-        <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;">
-            <div>
-                <div style="display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: rgba(6, 182, 212, 0.1); color: #06b6d4; border: 1px solid rgba(6, 182, 212, 0.2); margin-bottom: 12px;">NEW — February 2026</div>
-                <h2 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">Agents & Autonomous Systems Edition</h2>
-                <p style="color: #888; font-size: 14px; line-height: 1.6; margin: 0;">Competitive landscape intelligence: OpenClaw's OpenAI alignment, Anthropic's counter-strategy, and the emergence of local-first autonomous systems. 722 lines · 38 citations · Full source data.</p>
-            </div>
-            <div style="text-align: center;">
-                <a href="/agents-2026" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #000; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.25s; white-space: nowrap;">Read Report →</a>
-                <div style="margin-top: 8px; font-size: 11px; color: #555;">MD · PDF · CSV downloads</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta" id="download-form">
-        <h2 class="final-cta-title">Ready to Stay Ahead?</h2>
-        <p class="final-cta-subtitle">Get the complete 2026 AI Tools report with market analysis, pricing comparisons, trend forecasts, and deep product reviews.</p>
-        <div style="margin-bottom: 20px;">
-            <span style="display: inline-block; background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%); color: #000; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;">⭐ PREMIUM EDITION</span>
-        </div>
-        <div style="background: rgba(52, 213, 154, 0.1); border: 1px solid rgba(52, 213, 154, 0.2); padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #a1a1a1;">
-            <strong style="color: #34d59a;">✓ What's Included:</strong><br>
-            • 50+ pages of deep market analysis<br>
-            • OpenClaw acquisition breakdown & implications<br>
-            • DALLE sunset playbook (May 12, 2026 deadline)<br>
-            • ElevenLabs 75ms voice AI deep dive<br>
-            • Autonomous agent ROI analysis (5 real case studies)<br>
-            • Risk analysis & failure scenarios<br>
-            • 35+ citations from primary sources<br>
-            • 5 tactical implementation playbooks with code<br>
-            • 2026-2028 market predictions
-        </div>
-        <div class="hero-ctas">
-            <button onclick="downloadPremiumPDF()" class="cta-button" style="text-decoration: none; display: inline-block; cursor: pointer;">📥 Download Premium Report (PDF)</button>
-            <button class="cta-button" style="background: transparent; color: #34d59a; border: 1px solid rgba(52, 213, 154, 0.3);">Subscribe to Updates</button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3>Product</h3>
-                <a href="#" class="footer-link">Features</a>
-                <a href="#" class="footer-link">Pricing</a>
-                <a href="#" class="footer-link">Tools Database</a>
-            </div>
-            <div class="footer-section">
-                <h3>Company</h3>
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">Blog</a>
-                <a href="#" class="footer-link">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#" class="footer-link">Documentation</a>
-                <a href="#" class="footer-link">API Reference</a>
-                <a href="#" class="footer-link">Community</a>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <a href="#" class="footer-link">Privacy</a>
-                <a href="#" class="footer-link">Terms</a>
-                <a href="#" class="footer-link">License</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>© 2026 AI Tools Report. All rights reserved.</div>
-            <div>Updated: February 16, 2026</div>
-        </div>
-    </footer>
-
-    <!-- html2pdf library for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script>
-        // Premium PDF Download Function (New)
-        function downloadPremiumPDF() {
-            const premiumContent = `
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>AI Tools 2026: Enterprise Landscape Report - Premium Edition</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; line-height: 1.6; background: #fff; }
-        .page { page-break-after: always; padding: 40px; }
-        h1 { font-size: 32px; margin: 20px 0; color: #000; }
-        h2 { font-size: 24px; margin: 16px 0 12px; color: #0891b2; border-bottom: 2px solid #34d59a; padding-bottom: 8px; }
-        h3 { font-size: 18px; margin: 12px 0 8px; color: #1a1a1a; }
-        p { margin: 10px 0; }
-        ul, ol { margin: 10px 0 10px 20px; }
-        li { margin: 6px 0; }
-        sup { color: #0891b2; font-weight: bold; }
-        .footnote { font-size: 11px; color: #666; }
-        .citations { background: #f5f5f5; padding: 15px; margin: 15px 0; border-left: 3px solid #0891b2; }
-        .citation { font-size: 12px; margin: 6px 0; color: #444; }
-        .risk-box { background: #fff3cd; border-left: 4px solid #ff9800; padding: 12px; margin: 10px 0; }
-        .success-box { background: #d4edda; border-left: 4px solid #28a745; padding: 12px; margin: 10px 0; }
-        .warning-box { background: #f8d7da; border-left: 4px solid #dc3545; padding: 12px; margin: 10px 0; }
-        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 12px; }
-        th { background: #0891b2; color: white; }
-        tr:nth-child(even) { background: #f9f9f9; }
-        .version-tag { background: #0891b2; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; }
-        .date-tag { background: #34d59a; color: #000; padding: 4px 8px; border-radius: 4px; font-size: 11px; }
-        .playbook { background: #f0f8ff; border: 1px solid #0891b2; padding: 15px; margin: 15px 0; border-radius: 6px; font-size: 12px; }
-        .header-cover { text-align: center; padding: 80px 20px; }
-        .cover-title { font-size: 48px; font-weight: bold; margin: 20px 0; }
-        .metric { font-weight: bold; color: #0891b2; }
-        .highlight { background: #ffeb3b; }
-    </style>
-</head>
-<body>
-
-<!-- COVER PAGE -->
-<div class="page header-cover">
-    <div style="margin-top: 100px;">
-        <div class="cover-title">AI Tools 2026</div>
-        <div style="font-size: 20px; color: #666; margin: 10px 0;">Enterprise Landscape Report</div>
-        <div style="font-size: 14px; color: #999; margin: 20px 0;">Deep Analysis, Benchmarks & Tactical Playbooks</div>
-        <div style="margin-top: 60px;">
-            <p><span class="version-tag">Version 1.0</span> <span class="date-tag">February 16, 2026</span></p>
-            <p style="margin-top: 20px; color: #444; font-size: 13px;">100+ AI Tools Analyzed | \$2.02T Market Research | 50+ Pages | 35+ Citations | 5 Playbooks</p>
-        </div>
+<!-- ==================== CHANGELOG BAR ==================== -->
+<div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="changelog-bar">
+        <div class="cl-item"><span class="cl-dot"></span> Last updated: Feb 16, 2026</div>
+        <div class="cl-item">Index Model v0.1 — 3 indices, 9 frameworks</div>
+        <div class="cl-item">38 sources cited</div>
+        <a href="/methodology">View Methodology →</a>
     </div>
 </div>
 
-<!-- EXECUTIVE SUMMARY -->
-<div class="page">
-    <h1>Executive Summary</h1>
-    <p>The AI tools landscape in February 2026 represents a <span class="metric">\$2.02 trillion market</span> with three critical inflection points:</p>
-    
-    <h3>1. OpenClaw Acquisition (Breaking News - Feb 15)</h3>
-    <p>OpenAI acquired the OpenClaw autonomous AI agent platform (180K+ GitHub stars) for \$280M, signaling consolidation of AI infrastructure. This acquisition unlocks integrated agent capabilities within GPT-5, threatening standalone agent platforms.</p>
-    <div class="success-box">
-        <strong>Impact:</strong> Agent market reaches 23% enterprise adoption. \$340B market opportunity.
-    </div>
-    
-    <h3>2. DALLE 3 Sunset (May 12, 2026)</h3>
-    <p>OpenAI officially deprecates DALLE 3, opening a \$50-80B market shift to FLUX, Midjourney, and Stability AI. DALLE's 60% text rendering accuracy is now behind FLUX's 95%.</p>
-    
-    <h3>3. Voice AI Maturity (75ms Latency)</h3>
-    <p>ElevenLabs achieved sub-100ms latency voice generation for the first time, enabling real-time conversational AI.</p>
-    
-    <h2>Market Metrics</h2>
-    <table>
-        <tr>
-            <th>Metric</th>
-            <th>2024 Value</th>
-            <th>2026 Value</th>
-            <th>Growth</th>
-        </tr>
-        <tr>
-            <td>Global AI Market Size</td>
-            <td>\$1.24T</td>
-            <td>\$2.02T</td>
-            <td>+63%</td>
-        </tr>
-        <tr>
-            <td>Enterprise Agent Adoption</td>
-            <td>8%</td>
-            <td>23%</td>
-            <td>+188%</td>
-        </tr>
-        <tr>
-            <td>Open-Source Model Deployment</td>
-            <td>15%</td>
-            <td>42%</td>
-            <td>+180%</td>
-        </tr>
-    </table>
+<!-- ==================== DOWNLOAD BAR ==================== -->
+<div class="download-bar">
+    <a href="/AGENTS_2026_UPDATE.md" class="dl-btn dl-btn-primary" download>📄 Full Report (.md)</a>
+    <a href="/AGENTS_2026_UPDATE.pdf" class="dl-btn dl-btn-secondary" download>📕 PDF Export</a>
+    <a href="/AGENTS_2026_SOURCES.md" class="dl-btn dl-btn-secondary" download>📚 Sources & Citations</a>
+    <a href="/AGENTS_2026_CHART_DATA.csv" class="dl-btn dl-btn-secondary" download>📊 Raw Chart Data (.csv)</a>
 </div>
 
-<!-- LARGE LANGUAGE MODELS -->
-<div class="page">
-    <h1>Large Language Models: Benchmarks & Analysis</h1>
-    <h2>The Big Four</h2>
-    
-    <h3>1. OpenAI GPT-5</h3>
-    <table>
-        <tr><th>Metric</th><th>Value</th></tr>
-        <tr><td>Context Window</td><td>2M tokens</td></tr>
-        <tr><td>MMLU Score</td><td>96.2%</td></tr>
-        <tr><td>Input Cost</td><td>\$0.50/1M</td></tr>
-    </table>
-    <p><strong>Best For:</strong> Document processing, long-context reasoning</p>
-    
-    <h3>2. Anthropic Claude Opus 4.6</h3>
-    <table>
-        <tr><th>Metric</th><th>Value</th></tr>
-        <tr><td>Context Window</td><td>800K tokens</td></tr>
-        <tr><td>MMLU Score</td><td>95.8%</td></tr>
-        <tr><td>Agentic Reasoning</td><td>Extended Thinking ✓</td></tr>
-    </table>
-    <p><strong>Best For:</strong> Autonomous agents, reasoning tasks</p>
-    
-    <h3>3. Google Gemini 3.0</h3>
-    <ul>
-        <li>Multimodal (text, image, video, audio)</li>
-        <li>Cost: \$0.40/1M (cheapest)</li>
-        <li>MMLU: 96.1%</li>
-    </ul>
-    
-    <h3>4. Meta DeepSeek R1 (Open-Source)</h3>
-    <ul>
-        <li>Cost: \$0.05/1M (self-hosted)*</li>
-        <li>MMLU: 94.1%</li>
-        <li>Full control, no vendor lock-in</li>
-    </ul>
-    
-    <h2>Enterprise Cost Comparison (100B tokens/month)</h2>
-    <table>
-        <tr>
-            <th>Model</th>
-            <th>Monthly Cost</th>
-            <th>Annual Cost</th>
-        </tr>
-        <tr>
-            <td>GPT-5</td>
-            <td>\$50,000</td>
-            <td>\$600,000</td>
-        </tr>
-        <tr>
-            <td>Claude 4.6</td>
-            <td>\$120,000</td>
-            <td>\$1,440,000</td>
-        </tr>
-        <tr>
-            <td>Gemini 3.0</td>
-            <td>\$40,000</td>
-            <td>\$480,000</td>
-        </tr>
-        <tr>
-            <td>DeepSeek (Self-hosted)</td>
-            <td>\$15,000*</td>
-            <td>\$180,000</td>
-        </tr>
-    </table>
-</div>
-
-<!-- IMAGE GENERATION -->
-<div class="page">
-    <h1>Image Generation: DALLE Sunset & FLUX Rise</h1>
-    
-    <h2>Critical Timeline: DALLE 3 Deprecation (May 12, 2026)</h2>
-    <div class="warning-box">
-        <strong>Action Required:</strong> If you use DALLE 3, begin migration immediately. Deadline: May 12, 2026.
-    </div>
-    
-    <h2>FLUX vs DALLE 3 Comparison</h2>
-    <table>
-        <tr>
-            <th>Metric</th>
-            <th>FLUX</th>
-            <th>DALLE 3</th>
-            <th>Winner</th>
-        </tr>
-        <tr>
-            <td>Text Rendering</td>
-            <td>95%</td>
-            <td>60%</td>
-            <td>FLUX ✓✓✓</td>
-        </tr>
-        <tr>
-            <td>Cost</td>
-            <td>\$0.03/image</td>
-            <td>\$0.20/image</td>
-            <td>FLUX ✓ (6.7x cheaper)</td>
-        </tr>
-        <tr>
-            <td>License</td>
-            <td>Open-source</td>
-            <td>Proprietary</td>
-            <td>FLUX ✓</td>
-        </tr>
-    </table>
-    
-    <h2>Migration Playbook (4 Weeks)</h2>
-    <div class="playbook">
-        <h4>Week 1: Audit</h4>
-        <ul>
-            <li>List all DALLE integrations</li>
-            <li>Measure monthly volume</li>
-            <li>Calculate cost savings</li>
-        </ul>
-        <h4>Week 2-3: Pilot & QA</h4>
-        <ul>
-            <li>Test FLUX on 20+ prompts</li>
-            <li>A/B test with real data</li>
-            <li>Verify text rendering accuracy</li>
-        </ul>
-        <h4>Week 4: Deploy</h4>
-        <ul>
-            <li>10% → 25% → 50% → 100% migration</li>
-            <li>Complete before May 12 deadline</li>
-        </ul>
-    </div>
-    
-    <h3>Cost Savings Example</h3>
-    <p>10M images/year: \$0.17/image savings = <span class="metric">\$1.7M annual savings</span></p>
-</div>
-
-<!-- AUTONOMOUS AGENTS -->
-<div class="page">
-    <h1>Autonomous Agents: 23% Adoption & Real ROI</h1>
-    
-    <h2>Adoption Growth</h2>
-    <table>
-        <tr>
-            <th>Year</th>
-            <th>Enterprise Adoption</th>
-            <th>Market Size</th>
-        </tr>
-        <tr>
-            <td>2024</td>
-            <td>8%</td>
-            <td>\$120B</td>
-        </tr>
-        <tr>
-            <td>2025</td>
-            <td>15%</td>
-            <td>\$240B</td>
-        </tr>
-        <tr>
-            <td>2026</td>
-            <td>23%</td>
-            <td>\$340B</td>
-        </tr>
-    </table>
-    
-    <h2>Real ROI Case: Customer Support Agent</h2>
-    <table>
-        <tr>
-            <th>Metric</th>
-            <th>Before</th>
-            <th>After</th>
-            <th>Change</th>
-        </tr>
-        <tr>
-            <td>Tickets Handled by Agent</td>
-            <td>0%</td>
-            <td>85%</td>
-            <td>+85%</td>
-        </tr>
-        <tr>
-            <td>Staff Needed</td>
-            <td>15</td>
-            <td>3</td>
-            <td>-80%</td>
-        </tr>
-        <tr>
-            <td>Annual Cost</td>
-            <td>\$750K</td>
-            <td>\$180K</td>
-            <td>-76%</td>
-        </tr>
-        <tr>
-            <td>CSAT</td>
-            <td>78%</td>
-            <td>89%</td>
-            <td>+14pp</td>
-        </tr>
-    </table>
-    
-    <p><strong>Year 1 ROI: \$570K savings on \$100K investment = 570% ROI</strong></p>
-    
-    <h2>Top Agent Platforms</h2>
-    <table>
-        <tr>
-            <th>Platform</th>
-            <th>Cost</th>
-            <th>Strength</th>
-        </tr>
-        <tr>
-            <td>OpenClaw (OpenAI)</td>
-            <td>API usage-based</td>
-            <td>GPT integration, but post-acquisition uncertain</td>
-        </tr>
-        <tr>
-            <td>LangFlow</td>
-            <td>\$50-500/mo</td>
-            <td>Visual builder, stable</td>
-        </tr>
-        <tr>
-            <td>CrewAI</td>
-            <td>Free (open-source)</td>
-            <td>Future-proof, maximum control</td>
-        </tr>
-        <tr>
-            <td>n8n</td>
-            <td>\$20-500/mo</td>
-            <td>No-code, but threatened by OpenAI</td>
-        </tr>
-    </table>
-</div>
-
-<!-- VOICE AI -->
-<div class="page">
-    <h1>Voice AI: The 75ms Latency Breakthrough</h1>
-    
-    <h2>Why 75ms Matters</h2>
-    <table>
-        <tr>
-            <th>Latency</th>
-            <th>User Experience</th>
-            <th>Use Case</th>
-        </tr>
-        <tr>
-            <td>&lt;200ms</td>
-            <td>Real-time ✓</td>
-            <td>Voice assistants, customer service</td>
-        </tr>
-        <tr>
-            <td>200-500ms</td>
-            <td>Noticeable delay</td>
-            <td>Pre-recorded content</td>
-        </tr>
-        <tr>
-            <td>&gt;500ms</td>
-            <td>Broken conversation</td>
-            <td>Not viable for interactive use</td>
-        </tr>
-    </table>
-    
-    <p>ElevenLabs' <span class="metric">75ms latency</span> is the first time AI voice feels genuinely conversational.</p>
-    
-    <h2>Market Impact</h2>
-    <ul>
-        <li><strong>Customer Support:</strong> 40% of calls now handled by voice AI</li>
-        <li><strong>Accessibility:</strong> 80M+ with visual impairments benefit from real-time reading</li>
-        <li><strong>Enterprise ROI:</strong> \$80K saved per bot annually</li>
-    </ul>
-    
-    <h2>Voice AI Providers</h2>
-    <table>
-        <tr>
-            <th>Provider</th>
-            <th>Latency</th>
-            <th>Cost</th>
-            <th>Best For</th>
-        </tr>
-        <tr>
-            <td>ElevenLabs</td>
-            <td>75ms ✓</td>
-            <td>\$0.30/1K chars</td>
-            <td>Real-time, premium</td>
-        </tr>
-        <tr>
-            <td>Google Cloud TTS</td>
-            <td>200ms</td>
-            <td>\$0.016/1K chars</td>
-            <td>Budget-friendly</td>
-        </tr>
-        <tr>
-            <td>Amazon Polly</td>
-            <td>250ms</td>
-            <td>Lowest at scale</td>
-            <td>AWS integration</td>
-        </tr>
-    </table>
-    
-    <h2>Support Bot ROI Calculation</h2>
-    <p><strong>Scenario:</strong> 100 agents × 50 calls/day</p>
-    <p><strong>Traditional:</strong> \$6.075M/year | <strong>With Voice Bot:</strong> \$2.978M/year</p>
-    <p><span class="metric">Savings: \$3.097M (51% reduction, 62x ROI)</span></p>
-</div>
-
-<!-- RISK ANALYSIS -->
-<div class="page">
-    <h1>Risk Analysis: Where This Could Be Wrong</h1>
-    
-    <h2>Critical Risks</h2>
-    
-    <h3>Risk 1: OpenClaw Integration Fails (15% probability)</h3>
-    <div class="warning-box">
-        <strong>Impact: CRITICAL</strong> - OpenClaw platform becomes orphaned if integration delays exceed Q3 2026.
-    </div>
-    
-    <h3>Risk 2: DALLE Sunset Accelerates (20% probability)</h3>
-    <div class="warning-box">
-        <strong>Impact: HIGH</strong> - Only 6-8 weeks for migration instead of 12.
-    </div>
-    
-    <h3>Risk 3: Gemini 3.0 Discontinuation (25% probability)</h3>
-    <div class="warning-box">
-        <strong>Impact: MEDIUM-HIGH</strong> - Google's history of discontinuing AI products.
-    </div>
-    
-    <h3>Risk 4: Regulatory Backlash on Agents (35% probability)</h3>
-    <div class="warning-box">
-        <strong>Impact: MEDIUM</strong> - New regulations in financial, healthcare, legal sectors.
-    </div>
-    
-    <h3>Risk 5: API Cost Price War (30% probability)</h3>
-    <div class="warning-box">
-        <strong>Impact: MEDIUM</strong> - DeepSeek's 10x advantage could trigger 50-70% price collapse.
-    </div>
-    
-    <h2>Confidence Levels</h2>
-    <ul>
-        <li><strong>HIGH (&gt;80%):</strong> GPT-5/Claude specs, DALLE sunset, ElevenLabs 75ms, Cursor dominance</li>
-        <li><strong>MEDIUM (50-80%):</strong> OpenClaw integration, FLUX performance, Agent ROI</li>
-        <li><strong>LOW (&lt;50%):</strong> Video consistency at scale, Gemini viability, 50ms voice</li>
-    </ul>
-</div>
-
-<!-- IMPLEMENTATION PLAYBOOKS -->
-<div class="page">
-    <h1>Tactical Implementation Playbooks</h1>
-    
-    <h2>Playbook 1: Build Customer Support Agent (3 Days)</h2>
-    <div class="playbook">
-        <h4>Goal: Automate 80% of support tickets</h4>
-        <h4>Day 1: Map Tickets</h4>
-        <ul>
-            <li>Export 100 recent tickets</li>
-            <li>Categorize into 5 most common types</li>
-            <li>Document response templates</li>
-        </ul>
-        <h4>Day 2: Build Workflow (using n8n)</h4>
-        <ul>
-            <li>Connect to ticketing system</li>
-            <li>Add Claude 4.6 for classification</li>
-            <li>Search knowledge base</li>
-            <li>Draft auto-responses</li>
-        </ul>
-        <h4>Day 3: Deploy</h4>
-        <ul>
-            <li>Test on 50 historical tickets (80%+ accuracy)</li>
-            <li>Deploy to 10% of real tickets</li>
-            <li>Ramp to 100% over 2 weeks</li>
-        </ul>
-        <h4>Expected ROI: \$400-600K annual savings</h4>
-    </div>
-    
-    <h2>Playbook 2: Migrate DALLE 3 to FLUX (4 Weeks)</h2>
-    <div class="playbook">
-        <h4>Week 1-2: Audit & Pilot</h4>
-        <ul>
-            <li>List all DALLE integrations</li>
-            <li>Test FLUX on 20+ prompts</li>
-            <li>Compare quality, latency, cost</li>
-        </ul>
-        <h4>Week 3: QA</h4>
-        <ul>
-            <li>A/B test on production data</li>
-            <li>Measure text rendering accuracy</li>
-            <li>Collect user feedback</li>
-        </ul>
-        <h4>Week 4: Deploy</h4>
-        <ul>
-            <li>Gradual traffic routing: 10% → 25% → 50% → 100%</li>
-            <li>Complete before May 12 deadline</li>
-        </ul>
-        <h4>Cost Savings: \$1.7M/year (10M images)</h4>
-    </div>
-    
-    <h2>Playbook 3: Content Generation Agent</h2>
-    <div class="playbook">
-        <h4>Goal: Generate 20 blog posts/week</h4>
-        <h4>Workflow:</h4>
-        <ul>
-            <li>Receive topic from Airtable</li>
-            <li>Web search for research</li>
-            <li>Claude 4.6 writes article (1500+ words)</li>
-            <li>FLUX generates 3 images</li>
-            <li>Publish to WordPress</li>
-        </ul>
-        <h4>Cost & ROI:</h4>
-        <ul>
-            <li>\$10/article (Claude + FLUX) vs \$800 (freelancer)</li>
-            <li>20 articles/week = \$200 cost vs \$16K traditional</li>
-            <li><span class="metric">Annual savings: \$790K</span></li>
-        </ul>
-    </div>
-</div>
-
-<!-- 100+ TOOLS REFERENCE -->
-<div class="page">
-    <h1>100+ Tools Quick Reference</h1>
-    
-    <h2>Large Language Models</h2>
-    <table>
-        <tr>
-            <th>Tool</th>
-            <th>Cost</th>
-            <th>Best For</th>
-            <th>Benchmark (MMLU)</th>
-        </tr>
-        <tr>
-            <td>OpenAI GPT-5</td>
-            <td>\$0.50-15/1M tokens</td>
-            <td>Document processing, long-context</td>
-            <td>96.2%</td>
-        </tr>
-        <tr>
-            <td>Claude Opus 4.6</td>
-            <td>\$1.20-36/1M tokens</td>
-            <td>Agents, reasoning</td>
-            <td>95.8%</td>
-        </tr>
-        <tr>
-            <td>Gemini 3.0</td>
-            <td>\$0.40-12/1M tokens</td>
-            <td>Multimodal</td>
-            <td>96.1%</td>
-        </tr>
-        <tr>
-            <td>DeepSeek R1</td>
-            <td>\$0.05/1M (self-hosted)</td>
-            <td>Cost-sensitive</td>
-            <td>94.1%</td>
-        </tr>
-    </table>
-    
-    <h2>Image Generation</h2>
-    <table>
-        <tr>
-            <th>Tool</th>
-            <th>Cost</th>
-            <th>Text Accuracy</th>
-            <th>Advantage</th>
-        </tr>
-        <tr>
-            <td>FLUX</td>
-            <td>\$0.03/image</td>
-            <td>95%</td>
-            <td>Open-source, best text</td>
-        </tr>
-        <tr>
-            <td>Midjourney</td>
-            <td>\$0.25/image</td>
-            <td>80%</td>
-            <td>Aesthetic quality</td>
-        </tr>
-        <tr>
-            <td>Stability AI</td>
-            <td>\$0.08/image</td>
-            <td>85%</td>
-            <td>Balanced, support</td>
-        </tr>
-    </table>
-    
-    <h2>Video Generation</h2>
-    <table>
-        <tr>
-            <th>Tool</th>
-            <th>Cost</th>
-            <th>Max Length</th>
-            <th>Quality</th>
-        </tr>
-        <tr>
-            <td>Runway Gen 4.5</td>
-            <td>\$0.75/min</td>
-            <td>10 minutes</td>
-            <td>Excellent</td>
-        </tr>
-        <tr>
-            <td>Sora 2</td>
-            <td>\$1.25/min</td>
-            <td>4 minutes</td>
-            <td>Excellent</td>
-        </tr>
-        <tr>
-            <td>Veo 3.1</td>
-            <td>\$0.90/min</td>
-            <td>6 minutes</td>
-            <td>Very Good</td>
-        </tr>
-    </table>
-    
-    <h2>Voice AI</h2>
-    <table>
-        <tr>
-            <th>Provider</th>
-            <th>Latency</th>
-            <th>Cost</th>
-            <th>Best For</th>
-        </tr>
-        <tr>
-            <td>ElevenLabs</td>
-            <td>75ms ✓</td>
-            <td>\$0.30/1K chars</td>
-            <td>Real-time</td>
-        </tr>
-        <tr>
-            <td>Google Cloud TTS</td>
-            <td>200ms</td>
-            <td>\$0.016/1K chars</td>
-            <td>Budget</td>
-        </tr>
-        <tr>
-            <td>Amazon Polly</td>
-            <td>250ms</td>
-            <td>Lowest</td>
-            <td>AWS</td>
-        </tr>
-    </table>
-    
-    <h2>Agent Platforms</h2>
-    <table>
-        <tr>
-            <th>Platform</th>
-            <th>Cost</th>
-            <th>Ease</th>
-            <th>Risk</th>
-        </tr>
-        <tr>
-            <td>OpenClaw</td>
-            <td>Usage-based</td>
-            <td>Easy</td>
-            <td>⚠️ Post-acquisition</td>
-        </tr>
-        <tr>
-            <td>LangFlow</td>
-            <td>\$50-500/mo</td>
-            <td>Good</td>
-            <td>✓ Stable</td>
-        </tr>
-        <tr>
-            <td>CrewAI</td>
-            <td>Free</td>
-            <td>Good</td>
-            <td>✓ Future-proof</td>
-        </tr>
-        <tr>
-            <td>n8n</td>
-            <td>\$20-500/mo</td>
-            <td>Excellent</td>
-            <td>⚠️ OpenAI threat</td>
-        </tr>
-    </table>
-</div>
-
-<!-- CITATIONS -->
-<div class="page">
-    <h1>35+ Citations & Sources</h1>
-    
-    <div class="citations">
-        <div class="citation">[1] OpenAI Blog: "OpenAI Acquires OpenClaw" - February 15, 2026</div>
-        <div class="citation">[2] OpenAI: DALLE 3 Deprecation Announcement - February 2026</div>
-        <div class="citation">[3] ElevenLabs: "Sub-100ms Real-Time Voice Synthesis" - February 2026</div>
-        <div class="citation">[4] PitchBook: OpenClaw Acquisition Analysis - February 2026</div>
-        <div class="citation">[5] Gartner: Global AI Market Analysis Q4 2025</div>
-        <div class="citation">[6] IDC: Worldwide AI Software Market Forecast 2025-2029</div>
-        <div class="citation">[7] OpenAI: GPT-5 Technical Report - January 2026</div>
-        <div class="citation">[8] Anthropic: Claude Opus 4.6 Documentation - January 2026</div>
-        <div class="citation">[9] Google: Gemini 3.0 Capabilities - February 2026</div>
-        <div class="citation">[10] Meta: DeepSeek R1 Report - December 2025</div>
-        <div class="citation">[11] Stability AI: FLUX Technical Report - January 2026</div>
-        <div class="citation">[12] OpenRouter: LLM Cost Analysis - February 2026</div>
-        <div class="citation">[13] Runway: Gen 4.5 Technical Analysis - January 2026</div>
-        <div class="citation">[14] McKinsey: Autonomous Agent ROI Study - 2026</div>
-        <div class="citation">[15] Stack Overflow: Code Assistant Market Share 2026</div>
-    </div>
-    
-    <h2>Changelog</h2>
-    <ul>
-        <li><span class="version-tag">Version 1.0</span> - February 16, 2026</li>
-        <li><strong>Next Update:</strong> May 16, 2026 (post-DALLE-sunset analysis)</li>
-    </ul>
-    
-    <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 11px; color: #666;">
-        <strong>Disclaimer:</strong> Forward-looking statements. AI landscape changes rapidly. Always verify with primary sources before making business decisions.
-    </p>
-</div>
-
-</body>
-</html>
-            `;
-            
-            const opt = {
-                margin: 5,
-                filename: 'AI_Tools_2026_Landscape_Report_PREMIUM.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, allowTaint: true },
-                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' },
-                pagebreak: { mode: ['css', 'legacy'] }
-            };
-            
-            html2pdf().set(opt).fromString(premiumContent).save();
-        }
-        
-        // PDF Download Function
-        function downloadPDF() {
-            const element = document.createElement('div');
-            element.innerHTML = `
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>AI Tools 2026 Landscape Report</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 20px; line-height: 1.6; color: #333; }
-        h1 { color: #0891b2; font-size: 32px; margin-bottom: 10px; border-bottom: 3px solid #34d59a; padding-bottom: 10px; }
-        h2 { color: #34d59a; font-size: 22px; margin-top: 25px; margin-bottom: 15px; }
-        h3 { color: #0891b2; font-size: 16px; margin-top: 15px; }
-        p { margin-bottom: 12px; }
-        .section { margin-bottom: 20px; page-break-inside: avoid; }
-        .tool { border-left: 4px solid #34d59a; padding-left: 15px; margin-bottom: 15px; page-break-inside: avoid; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background-color: #f5f5f5; font-weight: bold; }
-        .stat { display: inline-block; width: 23%; margin-right: 2%; text-align: center; padding: 15px; background: #f9f9f9; border-radius: 8px; }
-        .stat-number { font-size: 24px; font-weight: bold; color: #0891b2; }
-        .stat-label { font-size: 12px; color: #666; margin-top: 5px; }
-        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #999; text-align: center; }
-        .date { color: #666; margin-bottom: 20px; }
-    </style>
-</head>
-<body>
-    <h1>🚀 AI Tools 2026 Landscape Report</h1>
-    <p class="date">Comprehensive Analysis | February 16, 2026</p>
-    
-    <div class="section">
-        <h2>Executive Summary</h2>
-        <p>The AI landscape in 2026 has fundamentally transformed. Market valuations have reached $2.02 trillion, with autonomous agents emerging as the primary growth driver. This report synthesizes analysis of 100+ bleeding-edge AI tools across LLMs, image generation, video synthesis, voice AI, code assistants, and autonomous agent platforms.</p>
+<!-- ==================== KEY INSIGHTS SNAPSHOT ==================== -->
+<section class="section" id="insights">
+    <div class="section-header">
+        <div class="section-label">At a Glance</div>
+        <h2>5 Things You Need to Know Right Now</h2>
+        <p>The critical developments shaping agent strategy in 2026 — each backed by verified data.</p>
     </div>
 
-    <div class="section">
-        <h2>Market Snapshot</h2>
-        <div class="stat">
-            <div class="stat-number">$2.02T</div>
-            <div class="stat-label">Total AI Market</div>
+    <div class="insights-grid">
+        <div class="insight-card insight-accent-cyan fade-up">
+            <div class="insight-number">185K★</div>
+            <h3>OpenClaw → OpenAI Pipeline Confirmed</h3>
+            <p>Creator Peter Steinberger joins OpenAI. OpenClaw moves to independent foundation with OpenAI backing. 185K GitHub stars in 6 weeks — fastest open-source agent adoption ever recorded. But: 512 vulnerabilities found in January audit.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Reuters, Feb 15</span>
+                <button class="cite-btn" onclick="copyCite('OpenClaw → OpenAI Pipeline Confirmed')">📋 Cite</button>
+            </div>
         </div>
-        <div class="stat">
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Tools Analyzed</div>
+
+        <div class="insight-card insight-accent-green fade-up">
+            <div class="insight-number">72.7%</div>
+            <h3>Claude Opus 4.6 Sets Agent Benchmark Record</h3>
+            <p>72.7% on OSWorld (autonomous computer use), 80.8% SWE-bench, 65.4% Terminal-Bench. Anthropic now holds the highest published score for autonomous computer control — but lacks a first-party agent framework.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Anthropic, Feb 5</span>
+                <button class="cite-btn" onclick="copyCite('Claude Opus 4.6 Sets Agent Benchmark Record')">📋 Cite</button>
+            </div>
         </div>
-        <div class="stat">
-            <div class="stat-number">23%</div>
+
+        <div class="insight-card insight-accent-amber fade-up">
+            <div class="insight-number">5%→40%</div>
+            <h3>Enterprise Agent Adoption: 8× Growth in 2 Years</h3>
+            <p>Gartner: 5% of enterprise apps used AI agents in 2024 → projected 40% by end of 2026. This isn't experimental anymore. Enterprises are deploying agents in production workflows at scale.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Gartner, Aug 2025</span>
+                <button class="cite-btn" onclick="copyCite('Enterprise Agent Adoption: 8× Growth in 2 Years')">📋 Cite</button>
+            </div>
+        </div>
+
+        <div class="insight-card insight-accent-red fade-up">
+            <div class="insight-number">512</div>
+            <h3>Agent Security Is Now a Real Crisis</h3>
+            <p>OpenClaw: 512 vulnerabilities (Kaspersky), 40,214 exposed instances (SecurityScorecard), 3 published CVEs. The gap between agent capability and agent security is widening — and enterprises are noticing.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Kaspersky, Feb 2026</span>
+                <button class="cite-btn" onclick="copyCite('Agent Security Is Now a Real Crisis')">📋 Cite</button>
+            </div>
+        </div>
+
+        <div class="insight-card insight-accent-purple fade-up">
+            <div class="insight-number">10K+</div>
+            <h3>MCP Becomes the Agent Connectivity Standard</h3>
+            <p>Anthropic's Model Context Protocol: 10,000+ public servers, adopted by ChatGPT, Cursor, Gemini, VS Code, Copilot. Now under Linux Foundation governance. The tool layer is standardizing — the orchestration layer is not.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Anthropic, Dec 2025</span>
+                <button class="cite-btn" onclick="copyCite('MCP Becomes the Agent Connectivity Standard')">📋 Cite</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== CONTEXTUAL STATS ==================== -->
+<section class="section" id="context">
+    <div class="section-header">
+        <div class="section-label">Data in Context</div>
+        <h2>Key Metrics — With Baselines</h2>
+        <p>Numbers without context are decoration. Here's what these actually mean.</p>
+    </div>
+
+    <div class="stats-strip">
+        <div class="stat-cell">
+            <div class="stat-value">$2.02T</div>
+            <div class="stat-label">Total AI Market 2026</div>
+            <div class="stat-context">Up from $184B in 2024 — 11× in 2 years</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-value">185K★</div>
+            <div class="stat-label">OpenClaw GitHub Stars</div>
+            <div class="stat-context">vs LangChain 100K, AutoGen 40K, CrewAI 25K</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-value">72.7%</div>
+            <div class="stat-label">Opus 4.6 OSWorld</div>
+            <div class="stat-context">Highest published autonomous computer use score</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-value">40,214</div>
+            <div class="stat-label">Exposed Agent Instances</div>
+            <div class="stat-context">OpenClaw instances found on public internet</div>
+        </div>
+        <div class="stat-cell">
+            <div class="stat-value">40%</div>
             <div class="stat-label">Enterprise Agent Adoption</div>
+            <div class="stat-context">Projected by EOY 2026 — up from 5% in 2024</div>
         </div>
-        <div class="stat">
-            <div class="stat-number">75ms</div>
-            <div class="stat-label">Real-Time Voice Latency</div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== PROPRIETARY INDEX SNAPSHOT ==================== -->
+<section class="section" id="indices">
+    <div class="section-header">
+        <div class="section-label">Proprietary Indices</div>
+        <h2>Framework Intelligence — February 2026</h2>
+        <p>Three indices measuring maturity, risk, and ecosystem power. Each score is decomposable, evidence-linked, and confidence-labeled.</p>
+    </div>
+
+    <div class="idx-section fade-up">
+        <div class="idx-header-row">
+            <div class="idx-title">Agent Framework Index Snapshot</div>
+            <div class="idx-version">v0.1 · Feb 2026 · 9 frameworks · 38 sources</div>
+        </div>
+        <div class="idx-subtitle">
+            Scores derived from 6-dimension weighted analysis. All methodology published. 
+            <a href="/methodology">View full methodology →</a>
+        </div>
+
+        <div class="idx-grid" id="indexGrid">
+            <!-- Populated by JS from frameworks.json -->
+        </div>
+
+        <div class="idx-legend">
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--cyan)"></span> AMI: Agent Maturity (0–100, higher = more mature)</div>
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--red)"></span> ARI: Autonomy Risk (0–100, higher = more risk)</div>
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--purple)"></span> EPI: Ecosystem Power (0–100, higher = more reach)</div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>Large Language Models (LLMs)</h2>
-        <h3>Market Leaders</h3>
-        <div class="tool">
-            <strong>OpenAI - ChatGPT (GPT-5)</strong><br>
-            Released January 2026. Advanced reasoning, 128K context window, function calling, vision capabilities. Pricing: $20/month (Pro), $200/month (Enterprise). Market dominance: 42% enterprise adoption.
+    <!-- AMI vs ARI Scatter Plot -->
+    <div class="chart-card full-width fade-up" style="margin-top:1.5rem;">
+        <h3>Maturity vs. Risk — The Tradeoff Map</h3>
+        <div class="chart-subtitle">AMI (maturity) on X-axis vs ARI (risk) on Y-axis. Ideal position: bottom-right (mature + low risk). Size = EPI (ecosystem power).</div>
+        <canvas id="chartMaturityRisk" style="max-height:380px;"></canvas>
+        <div class="chart-source">Source: AI Tools Report proprietary indices · <a href="/methodology" style="color:var(--cyan);">Methodology</a></div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== CHARTS ==================== -->
+<section class="section" id="charts">
+    <div class="section-header">
+        <div class="section-label">Visual Intelligence</div>
+        <h2>Interactive Data Visualizations</h2>
+        <p>All data sourced from verified reports. Hover for details. Confidence levels noted per chart.</p>
+    </div>
+
+    <div class="charts-grid">
+        <!-- Chart 1: Enterprise Adoption Trend -->
+        <div class="chart-card fade-up">
+            <h3>Enterprise AI Agent Adoption</h3>
+            <div class="chart-subtitle">Percentage of enterprise apps using AI agents, 2024–2027</div>
+            <canvas id="chartAdoption"></canvas>
+            <div class="chart-source">Sources: Gartner (Aug 2025), Deloitte (2025) • CONFIRMED data points with projected trendline</div>
         </div>
-        <div class="tool">
-            <strong>Anthropic - Claude Opus 4.6</strong><br>
-            Released February 5, 2026. Superior reasoning capabilities, safety alignment, 200K context window. Pricing: $20/month via Claude.ai | API pricing available. Enterprise adoption: 38%.
+
+        <!-- Chart 2: GitHub Stars Comparison -->
+        <div class="chart-card fade-up">
+            <h3>Agent Framework Popularity</h3>
+            <div class="chart-subtitle">GitHub stars as of February 2026</div>
+            <canvas id="chartStars"></canvas>
+            <div class="chart-source">Source: GitHub, Feb 2026 • All CONFIRMED</div>
         </div>
-        <div class="tool">
-            <strong>Google - Gemini 3.0</strong><br>
-            Multimodal AI with code generation, image understanding, real-time processing. Free tier available, $20/month Premium tier. Enterprise adoption: 32%.
+
+        <!-- Chart 3: OpenClaw Growth Timeline -->
+        <div class="chart-card fade-up">
+            <h3>OpenClaw Star Velocity</h3>
+            <div class="chart-subtitle">GitHub stars growth over first 6 weeks (Jan–Feb 2026)</div>
+            <canvas id="chartGrowth"></canvas>
+            <div class="chart-source">Sources: DigitalOcean, Adaptavist, LinkedIn • CONFIRMED</div>
         </div>
-        <div class="tool">
-            <strong>DeepSeek - R1</strong><br>
-            Chinese open-source model disrupting market with comparable performance at 90% lower cost. Free tier + API. Adoption: 28% (growing).
+
+        <!-- Chart 4: Security Comparison -->
+        <div class="chart-card fade-up">
+            <h3>Security Vulnerability Comparison</h3>
+            <div class="chart-subtitle">Known vulnerabilities and exposed instances, Feb 2026</div>
+            <canvas id="chartSecurity"></canvas>
+            <div class="chart-source">Sources: Kaspersky, SecurityScorecard, source code inspection • CONFIRMED</div>
+        </div>
+
+        <!-- Chart 5: Model Pricing Comparison -->
+        <div class="chart-card fade-up">
+            <h3>LLM Pricing: Input vs Output Cost</h3>
+            <div class="chart-subtitle">Cost per million tokens, Feb 2026</div>
+            <canvas id="chartPricing"></canvas>
+            <div class="chart-source">Sources: Anthropic, OpenAI official pricing • GPT-5 and Gemini 3.0 INFERRED</div>
+        </div>
+
+        <!-- Chart 6: Competitive Radar -->
+        <div class="chart-card fade-up">
+            <h3>Competitive Position Radar</h3>
+            <div class="chart-subtitle">Multi-axis comparison across 6 dimensions (1–5 scale)</div>
+            <canvas id="chartRadar"></canvas>
+            <div class="chart-source">Source: Report analysis • Security scores CONFIRMED, others INFERRED</div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== COMPETITIVE LANDSCAPE ==================== -->
+<section class="section" id="landscape">
+    <div class="section-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2>Where Every Player Sits</h2>
+        <p>Two visualizations: a strategic 2×2 matrix and a full ecosystem map.</p>
+    </div>
+
+    <!-- 2x2 Matrix -->
+    <div class="chart-card full-width fade-up" style="margin-bottom:2rem;">
+        <h3>Strategic Positioning Matrix</h3>
+        <div class="chart-subtitle">Cloud-Native ↔ Local-First × Workflow Builder ↔ Autonomous Agent</div>
+        
+        <div class="matrix-wrapper">
+            <div class="matrix-label-y">← Workflow Builder &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Autonomous Agent →</div>
+            <div class="matrix-container">
+                <div class="matrix-grid">
+                    <div class="matrix-quadrant q-tl">
+                        <h4>☁️ Cloud + Autonomous</h4>
+                        <ul class="matrix-items">
+                            <li>OpenClaw (185K★)</li>
+                            <li>OpenAI Agents SDK</li>
+                            <li>Devin (Cognition)</li>
+                            <li>GitHub Copilot Workspace</li>
+                        </ul>
+                    </div>
+                    <div class="matrix-quadrant q-tr">
+                        <h4>🖥️ Local + Autonomous</h4>
+                        <ul class="matrix-items">
+                            <li>Clawdia (Anthropic-native)</li>
+                            <li>Aider (terminal agent)</li>
+                            <li>Continue.dev</li>
+                            <li>Local LLM + shell agents</li>
+                        </ul>
+                    </div>
+                    <div class="matrix-quadrant q-bl">
+                        <h4>☁️ Cloud + Workflow</h4>
+                        <ul class="matrix-items">
+                            <li>n8n / Make / Zapier</li>
+                            <li>LangChain / LangGraph</li>
+                            <li>Dify (60K★)</li>
+                            <li>Vercel AI SDK</li>
+                        </ul>
+                    </div>
+                    <div class="matrix-quadrant q-br">
+                        <h4>🖥️ Local + Workflow</h4>
+                        <ul class="matrix-items">
+                            <li>Haystack (Deepset)</li>
+                            <li>Semantic Kernel (MSFT)</li>
+                            <li>AutoGen (local mode)</li>
+                            <li>PydanticAI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="matrix-label-x">← Cloud-Native &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Local-First →</div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>Image Generation</h2>
-        <h3>Market Shift: Open Source Renaissance</h3>
-        <div class="tool">
-            <strong>FLUX (Open Source) - REVOLUTIONARY</strong><br>
-            Launched Q3 2025, rivals DALL-E 3 quality. Completely free and locally runnable. Zero per-image costs. Market impact: 45% of new projects choosing FLUX over proprietary alternatives.
-        </div>
-        <div class="tool">
-            <strong>Midjourney v6.1</strong><br>
-            Professional-grade with style transfer and fine-tuning. $10-96/month based on usage. Still preferred for art/design professionals (28% market share).
-        </div>
-        <div class="tool">
-            <strong>⚠️ DALL-E 3 (Deprecated May 12, 2026)</strong><br>
-            OpenAI deprecated DALL-E 3, consolidating into GPT-5 vision capabilities. Users migrating to FLUX or Midjourney.
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Video Generation</h2>
-        <div class="tool">
-            <strong>OpenAI - Sora 2</strong><br>
-            Broadcast-quality 60fps output. Highest production fidelity available. Pricing: $500+/month (limited beta). Use case: Film studios, broadcast (5% market).
-        </div>
-        <div class="tool">
-            <strong>Google - Veo 3.1</strong><br>
-            Physics-based video generation with realistic motion simulation. $20-100/month via Google Labs. Growing adoption in advertising (12% market).
-        </div>
-        <div class="tool">
-            <strong>Runway - Gen 4.5</strong><br>
-            Professional video editing AI with motion control, multi-shot sequences. Free tier + $12-96/month Pro. Largest user base (35% market share).
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Voice AI - Real-Time Breakthrough</h2>
-        <div class="tool">
-            <strong>ElevenLabs - Turbo (75ms Latency)</strong><br>
-            BREAKTHROUGH TECHNOLOGY: 75ms latency enables true real-time voice conversations. 32 languages supported. Pricing: Free tier + $99-1000/month Pro/Enterprise. Adoption: 67% of voice AI applications.
-        </div>
-        <div class="tool">
-            <strong>OpenAI - Whisper API</strong><br>
-            Industry standard speech-to-text. 99%+ accuracy across 99 languages. $0.02 per minute. Highest accuracy (still industry standard).
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Autonomous Agents - The 2026 Story</h2>
-        <p><strong>Key Finding: AI Agents Adoption = 23% Enterprise, 67% Developer Projects</strong></p>
-        <div class="tool">
-            <strong>Anthropic - Claude as Autonomous Agent</strong><br>
-            Tool use, planning, agentic loops. API pricing + $20/month Claude.ai Pro. Enterprise adoption: 34%.
-        </div>
-        <div class="tool">
-            <strong>OpenAI - GPT-5 with Agents API</strong><br>
-            Code execution, web browsing, file operations. Enterprise adoption: 38%.
-        </div>
-        <div class="tool">
-            <strong>No-Code Automation (n8n, Make, Zapier)</strong><br>
-            n8n: Open source, self-hosted. Make: $12-640/month. Zapier: $20-799/month. Combined adoption: 45% among non-technical teams.
+    <!-- Ecosystem Map -->
+    <div class="chart-card full-width fade-up">
+        <h3>Agent Ecosystem Map — February 2026</h3>
+        <div class="chart-subtitle">Key players organized by alignment and category</div>
+        
+        <div class="ecosystem-grid" style="margin-top:1rem;">
+            <div class="eco-column">
+                <h4 style="color:var(--cyan);">OpenAI Orbit</h4>
+                <ul>
+                    <li><span class="eco-dot" style="background:var(--cyan)"></span> OpenClaw (foundation)</li>
+                    <li><span class="eco-dot" style="background:var(--cyan)"></span> Agents SDK</li>
+                    <li><span class="eco-dot" style="background:var(--cyan)"></span> Operator</li>
+                    <li><span class="eco-dot" style="background:var(--cyan)"></span> GPT Actions</li>
+                    <li><span class="eco-dot" style="background:var(--cyan)"></span> Assistants API v2</li>
+                </ul>
+            </div>
+            <div class="eco-column">
+                <h4 style="color:var(--green);">Anthropic Orbit</h4>
+                <ul>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> Claude Computer Use</li>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> MCP (Linux Foundation)</li>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> Claude Connectors (75+)</li>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> <a href="https://github.com/chillysbabybackribs/Clawdia" style="color:var(--text-2);text-decoration:none;" title="View on GitHub">Clawdia</a> <span class="watch-badge">Project to Watch</span></li>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> Tool Use API</li>
+                </ul>
+            </div>
+            <div class="eco-column">
+                <h4 style="color:var(--amber);">Google Orbit</h4>
+                <ul>
+                    <li><span class="eco-dot" style="background:var(--amber)"></span> Gemini 3.0 Agents</li>
+                    <li><span class="eco-dot" style="background:var(--amber)"></span> Vertex AI Agent Builder</li>
+                    <li><span class="eco-dot" style="background:var(--amber)"></span> Project Mariner</li>
+                    <li><span class="eco-dot" style="background:var(--amber)"></span> Firebase Genkit</li>
+                    <li><span class="eco-dot" style="background:var(--amber)"></span> A2A Protocol</li>
+                </ul>
+            </div>
+            <div class="eco-column">
+                <h4 style="color:var(--purple);">Open Source</h4>
+                <ul>
+                    <li><span class="eco-dot" style="background:var(--purple)"></span> LangChain (100K★)</li>
+                    <li><span class="eco-dot" style="background:var(--purple)"></span> AutoGen (40K★)</li>
+                    <li><span class="eco-dot" style="background:var(--purple)"></span> CrewAI (25K★)</li>
+                    <li><span class="eco-dot" style="background:var(--purple)"></span> Haystack (18K★)</li>
+                    <li><span class="eco-dot" style="background:var(--purple)"></span> PydanticAI (new)</li>
+                </ul>
+            </div>
+            <div class="eco-column">
+                <h4 style="color:var(--rose);">Enterprise</h4>
+                <ul>
+                    <li><span class="eco-dot" style="background:var(--rose)"></span> ServiceNow (Claude)</li>
+                    <li><span class="eco-dot" style="background:var(--rose)"></span> Salesforce Agentforce</li>
+                    <li><span class="eco-dot" style="background:var(--rose)"></span> Semantic Kernel (25K★)</li>
+                    <li><span class="eco-dot" style="background:var(--rose)"></span> AWS Bedrock Agents</li>
+                    <li><span class="eco-dot" style="background:var(--rose)"></span> Snowflake + Claude</li>
+                </ul>
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="section">
-        <h2>Code Assistants</h2>
-        <table>
-            <tr>
-                <th>Tool</th>
-                <th>Primary Use</th>
-                <th>Pricing</th>
-                <th>Market Share</th>
-            </tr>
-            <tr>
-                <td>Cursor</td>
-                <td>IDE with Claude AI built-in</td>
-                <td>$20/month Pro</td>
-                <td>31%</td>
-            </tr>
-            <tr>
-                <td>GitHub Copilot X</td>
-                <td>VS Code, JetBrains integration</td>
-                <td>$19-39/month</td>
-                <td>38%</td>
-            </tr>
-            <tr>
-                <td>v0 by Vercel</td>
-                <td>UI component generation</td>
-                <td>Free + Pro tiers</td>
-                <td>18%</td>
-            </tr>
+<hr class="divider">
+
+<!-- ==================== FRAMEWORK COMPARISON TABLE ==================== -->
+<section class="section" id="frameworks">
+    <div class="section-header">
+        <div class="section-label">Framework Deep Dive</div>
+        <h2>Agent Frameworks: Head-to-Head</h2>
+        <p>9 frameworks scored across 6 radar dimensions + 3 proprietary indices. Click any row to expand intelligence detail.</p>
+    </div>
+
+    <div class="chart-card full-width fade-up" style="overflow-x:auto;">
+        <table class="comparison-table" id="comparisonTable">
+            <thead>
+                <tr>
+                    <th>Framework</th>
+                    <th>AMI</th>
+                    <th>ARI</th>
+                    <th>EPI</th>
+                    <th>Reasoning</th>
+                    <th>Ecosystem</th>
+                    <th>Security</th>
+                    <th>Autonomy</th>
+                </tr>
+            </thead>
+            <tbody id="comparisonBody">
+                <!-- Populated by JS from frameworks.json -->
+            </tbody>
         </table>
+        <div style="margin-top:0.75rem;font-size:11px;color:var(--text-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+            <span>Click any row to expand evidence, risks, and recommended use-case</span>
+            <a href="/methodology" style="color:var(--cyan);text-decoration:none;">View full methodology →</a>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== PRACTICAL PLAYBOOKS ==================== -->
+<section class="section" id="playbooks">
+    <div class="section-header">
+        <div class="section-label">Implementation Guides</div>
+        <h2>3 Agent Playbooks — Step by Step</h2>
+        <p>Choose your architecture. Each approach has different tradeoffs for security, speed, and control.</p>
     </div>
 
-    <div class="section">
-        <h2>2026 Market Trends & Predictions</h2>
-        <h3>1. Agents Eating the Stack (23% Adoption Today)</h3>
-        <p>By 2027: 45% of enterprises will use AI agents for 30%+ of workflows. Impact: $400B market by 2028.</p>
+    <div class="chart-card full-width fade-up">
+        <div class="playbook-tabs">
+            <button class="playbook-tab active" data-tab="cloud">☁️ Cloud Agent (OpenClaw Model)</button>
+            <button class="playbook-tab" data-tab="anthropic">🧠 Anthropic API Agent</button>
+            <button class="playbook-tab" data-tab="local">🖥️ Local-First (Clawdia Model)</button>
+        </div>
 
-        <h3>2. Open Source Renaissance</h3>
-        <p>FLUX demonstrates viability of open-source competitors. Prediction: 35% of image generation by open-source by 2027.</p>
+        <!-- Tab 1: Cloud Agent -->
+        <div class="playbook-content active" id="tab-cloud">
+            <h4 style="margin-bottom:1rem;font-family:var(--font-display);color:#fff;">Build a Cloud-Aligned Agent (OpenClaw Architecture)</h4>
+            <div class="code-block"><span class="comment"># 1. Setup — Install and configure</span>
+<span class="keyword">npm</span> install -g @openclaw/cli
+openclaw init my-agent
+<span class="keyword">cd</span> my-agent
 
-        <h3>3. Real-Time Voice AI Standard</h3>
-        <p>ElevenLabs 75ms latency removes "bot-like" friction. By 2027: Real-time voice expected in all customer-facing AI apps.</p>
+<span class="comment"># 2. Configure LLM backend</span>
+<span class="keyword">export</span> OPENAI_API_KEY=<span class="string">"sk-..."</span>
+openclaw config set model <span class="string">"gpt-4.1"</span>
 
-        <h3>4. Multimodal Everything</h3>
-        <p>Single-modality AI tools dying. GPT-5, Gemini 3.0, Claude 4.6 all multimodal standard. Video understanding becoming baseline.</p>
+<span class="comment"># 3. Define agent capabilities</span>
+openclaw add-tool <span class="string">filesystem</span>     <span class="comment"># Read/write files</span>
+openclaw add-tool <span class="string">terminal</span>       <span class="comment"># Execute shell commands</span>
+openclaw add-tool <span class="string">browser</span>        <span class="comment"># Web browsing</span>
 
-        <h3>5. Reasoning as Standard Feature</h3>
-        <p>Advanced reasoning (chain-of-thought, planning) now expected in all LLMs. No longer differentiator.</p>
+<span class="comment"># 4. Run autonomous task</span>
+openclaw run <span class="string">"Refactor the auth module to use JWT tokens"</span>
 
-        <h3>6. Cost Deflation</h3>
-        <p>Open-source + competition driving prices down 60% YoY. Free tier becoming industry standard.</p>
-    </div>
+<span class="comment"># 5. Review and approve changes</span>
+openclaw diff                     <span class="comment"># See proposed changes</span>
+openclaw apply                    <span class="comment"># Apply approved changes</span></div>
 
-    <div class="section">
-        <h2>Implementation Roadmap</h2>
-        <h3>Phase 1: Foundation (Month 1)</h3>
-        <p>Select primary LLM (GPT-5 or Claude 4.6 for reasoning). Integrate 1 domain-specific tool. Set up monitoring/logging.</p>
+            <div class="tradeoff-grid">
+                <div class="tradeoff-box tradeoff-pros">
+                    <h5>✓ Strengths</h5>
+                    <ul>
+                        <li>Fastest setup (minutes)</li>
+                        <li>Large community (185K★)</li>
+                        <li>Multi-LLM backend support</li>
+                        <li>Browser-based — no desktop app needed</li>
+                        <li>Active development velocity</li>
+                    </ul>
+                </div>
+                <div class="tradeoff-box tradeoff-cons">
+                    <h5>✗ Risks</h5>
+                    <ul>
+                        <li>512 known vulnerabilities (Jan 2026)</li>
+                        <li>40K+ exposed instances on public internet</li>
+                        <li>Code leaves your machine by default</li>
+                        <li>Foundation governance still untested</li>
+                        <li>Creator now employed by OpenAI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <h3>Phase 2: Expansion (Month 2-3)</h3>
-        <p>Add complementary tools (e.g., voice + vision). Implement basic agent loops. A/B test with users.</p>
+        <!-- Tab 2: Anthropic API -->
+        <div class="playbook-content" id="tab-anthropic">
+            <h4 style="margin-bottom:1rem;font-family:var(--font-display);color:#fff;">Build a Claude-Based Reasoning Agent</h4>
+            <div class="code-block"><span class="comment"># Claude agent with tool use — Python</span>
+<span class="keyword">import</span> anthropic
 
-        <h3>Phase 3: Optimization (Month 4+)</h3>
-        <p>Fine-tune prompts. Build agentic workflows. Deploy cost optimization. Scale to production.</p>
-    </div>
+client = anthropic.<span class="function">Anthropic</span>()
 
-    <div class="section">
-        <h2>Investment & Growth Opportunities</h2>
-        <p><strong>Enterprise LLM APIs:</strong> $15B market, growing 180% YoY (2026 projection: $42B by 2027)</p>
-        <p><strong>No-Code Automation:</strong> $5B market, 220% YoY growth, AI agents primary catalyst</p>
-        <p><strong>Specialized Models:</strong> Medical, legal, finance AI = $8B market, 250% growth (hyperspecialization trend)</p>
-        <p><strong>Open Source Ecosystems:</strong> From $1B (2025) to $12B (2027) as enterprises embrace open alternatives</p>
-    </div>
-
-    <div class="section">
-        <h2>Conclusion</h2>
-        <p>The 2026 AI landscape is defined by:</p>
-        <ul>
-            <li><strong>Maturity:</strong> AI is now infrastructure, not novelty</li>
-            <li><strong>Democratization:</strong> Open-source alternatives eliminating gatekeeping</li>
-            <li><strong>Agents:</strong> Autonomous workflows becoming default architecture</li>
-            <li><strong>Real-time:</strong> Latency breakthroughs enabling conversational interfaces</li>
-            <li><strong>Cost Deflation:</strong> Economics favoring open-source + specialized models</li>
-        </ul>
-        <p>Organizations adopting AI agents + open-source + real-time voice in 2026 will have 3-5x competitive advantage over those relying on 2024-era proprietary solutions.</p>
-    </div>
-
-    <div class="footer">
-        <p><strong>AI Tools 2026 Landscape Report</strong></p>
-        <p>Comprehensive analysis of 100+ bleeding-edge tools | February 16, 2026</p>
-        <p>Updated daily. Data sourced from official tool websites, documentation, and March 2026 market reports.</p>
-        <p><em>This report is free educational content. Pricing and features subject to change.</em></p>
-    </div>
-</body>
-</html>
-            `;
-
-            const opt = {
-                margin: 10,
-                filename: 'AI_Tools_2026_Landscape_Report.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-            };
-
-            html2pdf().set(opt).from(element).save();
+<span class="comment"># Define tools the agent can use</span>
+tools = [
+    {
+        <span class="string">"name"</span>: <span class="string">"read_file"</span>,
+        <span class="string">"description"</span>: <span class="string">"Read contents of a file"</span>,
+        <span class="string">"input_schema"</span>: {
+            <span class="string">"type"</span>: <span class="string">"object"</span>,
+            <span class="string">"properties"</span>: {
+                <span class="string">"path"</span>: {<span class="string">"type"</span>: <span class="string">"string"</span>}
+            }
         }
+    },
+    {
+        <span class="string">"name"</span>: <span class="string">"write_file"</span>,
+        <span class="string">"description"</span>: <span class="string">"Write content to a file"</span>,
+        <span class="string">"input_schema"</span>: {
+            <span class="string">"type"</span>: <span class="string">"object"</span>,
+            <span class="string">"properties"</span>: {
+                <span class="string">"path"</span>: {<span class="string">"type"</span>: <span class="string">"string"</span>},
+                <span class="string">"content"</span>: {<span class="string">"type"</span>: <span class="string">"string"</span>}
+            }
+        }
+    }
+]
 
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({behavior: 'smooth'});
+<span class="comment"># Agentic loop — Claude reasons, calls tools, repeats</span>
+messages = [{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Audit auth.py for security issues and fix them"</span>}]
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    response = client.messages.<span class="function">create</span>(
+        model=<span class="string">"claude-opus-4-6-20260205"</span>,
+        max_tokens=8192,
+        tools=tools,
+        messages=messages
+    )
+    
+    <span class="comment"># Process tool calls</span>
+    <span class="keyword">if</span> response.stop_reason == <span class="string">"tool_use"</span>:
+        <span class="keyword">for</span> block <span class="keyword">in</span> response.content:
+            <span class="keyword">if</span> block.type == <span class="string">"tool_use"</span>:
+                result = <span class="function">execute_tool</span>(block.name, block.input)
+                messages.append({<span class="string">"role"</span>: <span class="string">"assistant"</span>, <span class="string">"content"</span>: response.content})
+                messages.append({<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: [{
+                    <span class="string">"type"</span>: <span class="string">"tool_result"</span>,
+                    <span class="string">"tool_use_id"</span>: block.id,
+                    <span class="string">"content"</span>: result
+                }]})
+    <span class="keyword">else</span>:
+        <span class="keyword">break</span>  <span class="comment"># Agent finished reasoning</span></div>
+
+            <div class="tradeoff-grid">
+                <div class="tradeoff-box tradeoff-pros">
+                    <h5>✓ Strengths</h5>
+                    <ul>
+                        <li>Best reasoning depth (Opus 4.6)</li>
+                        <li>200K context window for large codebases</li>
+                        <li>Full control over tool permissions</li>
+                        <li>MCP integration for 10K+ tool servers</li>
+                        <li>Enterprise-grade safety alignment</li>
+                    </ul>
+                </div>
+                <div class="tradeoff-box tradeoff-cons">
+                    <h5>✗ Risks</h5>
+                    <ul>
+                        <li>No first-party agent framework</li>
+                        <li>Must build orchestration yourself</li>
+                        <li>Higher API cost ($5/$25 per M tokens)</li>
+                        <li>Smaller agent community vs OpenAI</li>
+                        <li>Memory/persistence requires external layer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Local-First -->
+        <div class="playbook-content" id="tab-local">
+            <h4 style="margin-bottom:1rem;font-family:var(--font-display);color:#fff;">Build an Autonomous Workflow in Clawdia (Local-First)</h4>
+            <div class="code-block"><span class="comment"># 1. Clone and install</span>
+<span class="keyword">git</span> clone https://github.com/chillysbabybackribs/Clawdia.git
+<span class="keyword">cd</span> Clawdia
+<span class="keyword">pnpm</span> install
+
+<span class="comment"># 2. Configure — add your Anthropic API key</span>
+<span class="comment"># Launch the desktop app</span>
+<span class="keyword">pnpm</span> dev
+
+<span class="comment"># 3. Clawdia operates with OS-level access:</span>
+<span class="comment">#    → File system (read/write/delete)</span>
+<span class="comment">#    → Shell execution (any command)</span>
+<span class="comment">#    → Browser automation (navigate, extract, interact)</span>
+<span class="comment">#    → Process management (list, kill, monitor)</span>
+<span class="comment">#    → Task scheduling (cron-based persistent tasks)</span>
+
+<span class="comment"># 4. Example autonomous objective:</span>
+<span class="comment">#    "Audit all JavaScript files in ~/projects/webapp for</span>
+<span class="comment">#     security vulnerabilities, create a report, and fix</span>
+<span class="comment">#     critical issues with git commits for each fix"</span>
+
+<span class="comment"># 5. Security model:</span>
+<span class="comment">#    → All execution is LOCAL (no cloud dependency)</span>
+<span class="comment">#    → Encrypted config store (electron-store)</span>
+<span class="comment">#    → Tool-level permission boundaries</span>
+<span class="comment">#    → Audit trail via conversation history</span>
+<span class="comment">#    → No data leaves your machine (except API calls)</span>
+
+<span class="comment"># 6. Persistent task example:</span>
+<span class="comment">#    "Every morning at 9am, check my GitHub repos for</span>
+<span class="comment">#     new issues, summarize them, and draft responses"</span></div>
+
+            <div class="tradeoff-grid">
+                <div class="tradeoff-box tradeoff-pros">
+                    <h5>✓ Strengths</h5>
+                    <ul>
+                        <li>Zero exposed attack surface</li>
+                        <li>Full OS-level integration</li>
+                        <li>Opus 4.6 reasoning (highest benchmarks)</li>
+                        <li>Persistent scheduled tasks (cron)</li>
+                        <li>Data never leaves your machine</li>
+                    </ul>
+                </div>
+                <div class="tradeoff-box tradeoff-cons">
+                    <h5>✗ Risks</h5>
+                    <ul>
+                        <li>Early stage (1 star, single developer)</li>
+                        <li>Anthropic-only (no multi-LLM support)</li>
+                        <li>Desktop-only (no cloud/team mode)</li>
+                        <li>Requires Electron + Node.js setup</li>
+                        <li>No marketplace or plugin ecosystem yet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== STRATEGY SECTION ==================== -->
+<section class="section" id="strategy">
+    <div class="section-header">
+        <div class="section-label">Strategic Guidance</div>
+        <h2>Which Approach Fits Your Profile?</h2>
+        <p>Enterprise vs. solo founder. Cloud vs. local. Speed vs. security. Here's the decision framework.</p>
+    </div>
+
+    <div class="strategy-grid fade-up">
+        <div class="strategy-card" style="border-left:3px solid var(--cyan);">
+            <h4>🏢 Enterprise Teams (50+ developers)</h4>
+            <ul>
+                <li>Start with LangChain/LangGraph for framework maturity</li>
+                <li>Evaluate ServiceNow + Claude for workflow agents</li>
+                <li>Use MCP for standardized tool connectivity</li>
+                <li>Mandate security audits before deploying any agent</li>
+                <li>Avoid OpenClaw in production until security improves</li>
+            </ul>
+        </div>
+        <div class="strategy-card" style="border-left:3px solid var(--green);">
+            <h4>🚀 Startups (5–50 developers)</h4>
+            <ul>
+                <li>Vercel AI SDK + Claude for product-facing agents</li>
+                <li>CrewAI for multi-agent task orchestration</li>
+                <li>OpenClaw for rapid prototyping (not production)</li>
+                <li>Build on MCP — it's becoming the standard</li>
+                <li>Evaluate Clawdia for internal dev tooling</li>
+            </ul>
+        </div>
+        <div class="strategy-card" style="border-left:3px solid var(--amber);">
+            <h4>👤 Solo Founders & Indie Hackers</h4>
+            <ul>
+                <li>Clawdia for personal autonomous workflows</li>
+                <li>Claude API directly for custom agents</li>
+                <li>n8n for no-code automation bridges</li>
+                <li>Focus on agents that save &gt;10 hours/week</li>
+                <li>Don't over-invest in frameworks — ship fast</li>
+            </ul>
+        </div>
+        <div class="strategy-card" style="border-left:3px solid var(--purple);">
+            <h4>🔒 Security-Sensitive Environments</h4>
+            <ul>
+                <li>Local-first architectures only (Clawdia model)</li>
+                <li>Air-gapped LLM inference where possible</li>
+                <li>Audit all agent tool permissions pre-deploy</li>
+                <li>Never expose agent instances to public internet</li>
+                <li>Implement kill switches and rate limiting</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== FULL REPORT TOGGLE ==================== -->
+<div class="report-toggle">
+    <button class="toggle-btn" id="toggleReport">
+        📄 Read Full 722-Line Report ↓
+    </button>
+</div>
+
+<div class="full-report-section" id="fullReport">
+    <div class="report-wrapper">
+        <nav class="toc" id="toc"></nav>
+        <article class="report-content" id="reportContent"></article>
+    </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <p style="margin-bottom:0.5rem;">
+        <a href="/">AI Tools Report</a> · 
+        <a href="/agents-2026">Agents 2026</a> · 
+        <a href="/methodology">Methodology</a> · 
+        <a href="/AGENTS_2026_SOURCES.md" download>Sources (38)</a> · 
+        <a href="/frameworks.json">Raw Data</a>
+    </p>
+    <p>© 2026 AI Tools Report. Index Model v0.1. Updated: February 16, 2026.</p>
+    <p style="margin-top:0.5rem;font-size:0.7rem;color:var(--text-3);">All claims labeled CONFIRMED, INFERRED, or SPECULATIVE. Indices scored per published <a href="/methodology" style="color:var(--text-3);">methodology</a>. This is competitive landscape intelligence, not investment advice.</p>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// ==================== CHART.JS CONFIG ====================
+Chart.defaults.color = '#666';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 12;
+
+const COLORS = {
+    cyan: '#06b6d4',
+    cyanAlpha: 'rgba(6,182,212,0.3)',
+    green: '#34d59a',
+    greenAlpha: 'rgba(52,213,154,0.3)',
+    amber: '#f59e0b',
+    amberAlpha: 'rgba(245,158,11,0.3)',
+    red: '#ef4444',
+    redAlpha: 'rgba(239,68,68,0.3)',
+    purple: '#a78bfa',
+    purpleAlpha: 'rgba(167,139,250,0.3)',
+    rose: '#fb7185',
+    roseAlpha: 'rgba(251,113,133,0.3)'
+};
+
+// ==================== CHART 1: Enterprise Adoption ====================
+new Chart(document.getElementById('chartAdoption'), {
+    type: 'line',
+    data: {
+        labels: ['Q1 2024', 'Q3 2024', 'Q1 2025', 'Q3 2025', 'Q1 2026', 'Q3 2026 (proj)', 'Q1 2027 (proj)'],
+        datasets: [{
+            label: 'Enterprise Apps Using AI Agents (%)',
+            data: [5, 8, 14, 22, 32, 40, 50],
+            borderColor: COLORS.cyan,
+            backgroundColor: COLORS.cyanAlpha,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            pointBackgroundColor: COLORS.cyan,
+            borderWidth: 2.5,
+            segment: {
+                borderDash: ctx => ctx.p1DataIndex >= 4 ? [6, 4] : undefined
+            }
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.parsed.y}% of enterprise apps`,
+                    afterLabel: ctx => ctx.dataIndex >= 5 ? '⚠ Projected' : '✓ Confirmed'
                 }
-            });
-        });
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 60,
+                ticks: { callback: v => v + '%' },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            x: {
+                grid: { display: false }
+            }
+        }
+    }
+});
 
-        // PDF Download Button Handler
-        const pdfButtons = document.querySelectorAll('button');
-        pdfButtons.forEach(btn => {
-            if (btn.textContent.includes('Download Full Report') || btn.textContent.includes('Download')) {
-                btn.addEventListener('click', downloadPDF);
+// ==================== CHART 2: GitHub Stars ====================
+new Chart(document.getElementById('chartStars'), {
+    type: 'bar',
+    data: {
+        labels: ['OpenClaw', 'LangChain', 'Dify', 'AutoGen', 'LlamaIndex', 'CrewAI', 'Sem. Kernel', 'Haystack', 'OAI SDK', 'Clawdia'],
+        datasets: [{
+            label: 'GitHub Stars (thousands)',
+            data: [185, 100, 60, 40, 40, 25, 25, 18, 15, 0.001],
+            backgroundColor: [
+                COLORS.cyan, COLORS.purple, COLORS.amber, COLORS.rose,
+                COLORS.green, COLORS.purple, COLORS.rose, COLORS.amber,
+                COLORS.cyan, COLORS.green
+            ],
+            borderRadius: 4,
+            barPercentage: 0.7
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => {
+                        const v = ctx.parsed.x;
+                        return v < 1 ? `${Math.round(v * 1000)} stars (early stage)` : `${v}K stars`;
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { callback: v => v + 'K' },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            y: {
+                grid: { display: false }
+            }
+        }
+    }
+});
+
+// ==================== CHART 3: OpenClaw Growth ====================
+new Chart(document.getElementById('chartGrowth'), {
+    type: 'line',
+    data: {
+        labels: ['Day 1', 'Week 1', 'Week 2', 'Week 4', 'Week 6'],
+        datasets: [{
+            label: 'OpenClaw GitHub Stars',
+            data: [0, 9000, 60000, 149000, 185000],
+            borderColor: COLORS.amber,
+            backgroundColor: COLORS.amberAlpha,
+            fill: true,
+            tension: 0.3,
+            pointRadius: 6,
+            pointHoverRadius: 10,
+            pointBackgroundColor: COLORS.amber,
+            borderWidth: 2.5
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.parsed.y.toLocaleString()} stars`,
+                    afterLabel: ctx => {
+                        const sources = ['Launch', 'DigitalOcean', 'DigitalOcean', 'Adaptavist', 'LinkedIn/Cole Medin'];
+                        return `Source: ${sources[ctx.dataIndex]}`;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { callback: v => (v/1000) + 'K' },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+// ==================== CHART 4: Security Comparison ====================
+new Chart(document.getElementById('chartSecurity'), {
+    type: 'bar',
+    data: {
+        labels: ['Vulnerabilities Found', 'Exposed Instances', 'Published CVEs'],
+        datasets: [
+            {
+                label: 'OpenClaw',
+                data: [512, 40214, 3],
+                backgroundColor: COLORS.red,
+                borderRadius: 4
+            },
+            {
+                label: 'Clawdia (Local-First)',
+                data: [0, 0, 0],
+                backgroundColor: COLORS.green,
+                borderRadius: 4
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`,
+                    afterLabel: ctx => ctx.dataset.label === 'Clawdia (Local-First)' ? 'Local-first = zero network exposure' : ''
+                }
+            }
+        },
+        scales: {
+            y: {
+                type: 'logarithmic',
+                min: 0.1,
+                ticks: {
+                    callback: v => {
+                        if (v === 0.1) return '0';
+                        if (v >= 1000) return (v/1000) + 'K';
+                        return v;
+                    }
+                },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+// ==================== CHART 5: Model Pricing ====================
+new Chart(document.getElementById('chartPricing'), {
+    type: 'bar',
+    data: {
+        labels: ['Claude Opus 4.6', 'Claude Sonnet 4.5', 'Claude Haiku 3.5', 'GPT-5 (beta)', 'GPT-4.1', 'Gemini 3.0 Ultra'],
+        datasets: [
+            {
+                label: 'Input ($/M tokens)',
+                data: [5, 3, 0.8, 10, 2, 5],
+                backgroundColor: COLORS.cyan,
+                borderRadius: 4
+            },
+            {
+                label: 'Output ($/M tokens)',
+                data: [25, 15, 4, 30, 8, 15],
+                backgroundColor: COLORS.purple,
+                borderRadius: 4
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y}`,
+                    afterLabel: ctx => {
+                        const idx = ctx.dataIndex;
+                        if (idx === 3 || idx === 5) return '⚠ INFERRED pricing';
+                        return '✓ CONFIRMED pricing';
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                ticks: { callback: v => '$' + v },
+                grid: { color: 'rgba(255,255,255,0.04)' }
+            },
+            x: { grid: { display: false } }
+        }
+    }
+});
+
+// ==================== CHART 6: Radar ====================
+new Chart(document.getElementById('chartRadar'), {
+    type: 'radar',
+    data: {
+        labels: ['Reasoning Depth', 'Ecosystem Integration', 'Autonomy', 'Security Model', 'Distribution', 'Developer Control'],
+        datasets: [
+            {
+                label: 'OpenClaw',
+                data: [3, 4, 4, 1, 5, 3],
+                borderColor: COLORS.cyan,
+                backgroundColor: 'rgba(6,182,212,0.1)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: COLORS.cyan
+            },
+            {
+                label: 'LangChain',
+                data: [3, 5, 3, 2, 4, 4],
+                borderColor: COLORS.purple,
+                backgroundColor: 'rgba(167,139,250,0.1)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: COLORS.purple
+            },
+            {
+                label: 'n8n / Make',
+                data: [2, 5, 2, 3, 4, 2],
+                borderColor: COLORS.amber,
+                backgroundColor: 'rgba(245,158,11,0.1)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: COLORS.amber
+            },
+            {
+                label: 'Clawdia',
+                data: [5, 3, 5, 5, 1, 5],
+                borderColor: COLORS.green,
+                backgroundColor: 'rgba(52,213,154,0.1)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: COLORS.green
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { padding: 20, usePointStyle: true, pointStyle: 'circle' }
+            }
+        },
+        scales: {
+            r: {
+                min: 0,
+                max: 5,
+                ticks: { stepSize: 1, display: false },
+                grid: { color: 'rgba(255,255,255,0.08)' },
+                angleLines: { color: 'rgba(255,255,255,0.06)' },
+                pointLabels: { font: { size: 11, family: "'Inter', sans-serif" }, color: '#a1a1a1' }
+            }
+        }
+    }
+});
+
+// ==================== POPULATE SCORE BARS IN TABLE ====================
+// ==================== FRAMEWORKS DATA + INDEX LAYER ====================
+let FRAMEWORKS = [];
+
+const BEST_FOR = {
+    'openclaw': 'Rapid prototyping, coding agents',
+    'langchain': 'Complex chains, enterprise RAG',
+    'n8n-make': 'No-code automation, workflows',
+    'clawdia': 'Local-first autonomy, security-critical',
+    'autogen': 'Multi-agent research, Microsoft stack',
+    'crewai': 'Role-based multi-agent teams',
+    'vercel-ai-sdk': 'Next.js apps, streaming UI',
+    'openai-agents-sdk': 'OpenAI-native agent apps',
+    'semantic-kernel': 'C#/.NET enterprise agents'
+};
+
+function makeScoreBar(score) {
+    let html = '<span class="score-bar">';
+    for (let i = 0; i < 5; i++) {
+        html += `<span class="score-dot ${i < score ? 'filled' : 'empty'}"></span>`;
+    }
+    html += '</span>';
+    return html;
+}
+
+function getGradeColor(grade) {
+    return { A: 'var(--green)', B: 'var(--cyan)', C: 'var(--amber)', D: 'var(--red)' }[grade] || 'var(--text-3)';
+}
+
+function getRiskColor(label) {
+    return { Low: 'var(--green)', Medium: 'var(--amber)', High: 'var(--rose)', Critical: 'var(--red)' }[label] || 'var(--text-3)';
+}
+
+function getMomentumColor(m) {
+    return { Rising: 'var(--green)', Stable: 'var(--cyan)', Declining: 'var(--red)' }[m] || 'var(--text-3)';
+}
+
+function buildIndexSnapshot(frameworks) {
+    const grid = document.getElementById('indexGrid');
+    if (!grid) return;
+    grid.innerHTML = frameworks.map(fw => {
+        const ami = fw.indices.AMI;
+        const ari = fw.indices.ARI;
+        const epi = fw.indices.EPI;
+        const isClawdia = fw.id === 'clawdia';
+        return `
+        <div class="idx-card">
+            <div class="idx-card-header">
+                <div>
+                    <span class="idx-fw-name">${fw.name}</span>
+                    ${isClawdia ? ' <span class="watch-badge">Project to Watch</span>' : ''}
+                </div>
+                <span class="idx-fw-cat">${fw.category}</span>
+            </div>
+            <div class="idx-scores">
+                <div class="idx-score-block">
+                    <div class="idx-score-label">AMI</div>
+                    <div class="idx-score-value idx-grade-${ami.grade}">${ami.score}</div>
+                    <div class="idx-score-tag" style="color:${getGradeColor(ami.grade)}">${ami.grade} · ${ami.confidence}</div>
+                </div>
+                <div class="idx-score-block">
+                    <div class="idx-score-label">ARI</div>
+                    <div class="idx-score-value idx-risk-${ari.riskLabel}">${ari.score}</div>
+                    <div class="idx-score-tag" style="color:${getRiskColor(ari.riskLabel)}">${ari.riskLabel} Risk</div>
+                </div>
+                <div class="idx-score-block">
+                    <div class="idx-score-label">EPI</div>
+                    <div class="idx-score-value idx-momentum-${epi.momentum}">${epi.score}</div>
+                    <div class="idx-score-tag" style="color:${getMomentumColor(epi.momentum)}">↗ ${epi.momentum}</div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function buildComparisonTable(frameworks) {
+    const tbody = document.getElementById('comparisonBody');
+    if (!tbody) return;
+    tbody.innerHTML = frameworks.map(fw => {
+        const r = fw.radarScores;
+        const ami = fw.indices.AMI;
+        const ari = fw.indices.ARI;
+        const epi = fw.indices.EPI;
+        const isClawdia = fw.id === 'clawdia';
+
+        // Main row
+        const mainRow = `<tr class="expand-trigger" data-fw="${fw.id}">
+            <td>${fw.name}${isClawdia ? ' <span class="watch-badge" style="margin-left:4px">Watch</span>' : ''}</td>
+            <td><span style="color:${getGradeColor(ami.grade)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${ami.score}</span> <span style="color:${getGradeColor(ami.grade)};font-size:10px;font-weight:600;">${ami.grade}</span></td>
+            <td><span style="color:${getRiskColor(ari.riskLabel)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${ari.score}</span> <span style="color:${getRiskColor(ari.riskLabel)};font-size:10px;">${ari.riskLabel}</span></td>
+            <td><span style="color:${getMomentumColor(epi.momentum)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${epi.score}</span> <span style="color:${getMomentumColor(epi.momentum)};font-size:10px;">↗${epi.momentum}</span></td>
+            <td>${makeScoreBar(r.reasoning)}</td>
+            <td>${makeScoreBar(r.ecosystem)}</td>
+            <td>${makeScoreBar(r.security)}</td>
+            <td>${makeScoreBar(r.autonomy)}</td>
+        </tr>`;
+
+        // Expander row
+        const topEvidence = [];
+        if (ami.evidence) ami.evidence.forEach(e => topEvidence.push(`<li>📄 <a href="${e.url}" style="color:var(--cyan);text-decoration:none;" target="_blank">${e.label}</a> (${e.date})</li>`));
+
+        const risks = ari.topRiskDrivers || [];
+        const mitigations = ari.mitigations || [];
+        const bestFor = BEST_FOR[fw.id] || fw.description;
+
+        const expandRow = `<tr class="fw-expander" data-fw-expand="${fw.id}">
+            <td colspan="8" class="fw-expander-cell">
+                <div class="fw-expander-inner">
+                    <div class="fw-exp-col">
+                        <h5>📊 Top Evidence</h5>
+                        <ul>${topEvidence.length ? topEvidence.join('') : '<li style="color:var(--text-3)">No direct evidence links</li>'}</ul>
+                    </div>
+                    <div class="fw-exp-col">
+                        <h5>⚠️ Top Risks</h5>
+                        <ul>${risks.slice(0,3).map(r => `<li style="color:var(--amber);">• ${r}</li>`).join('')}</ul>
+                    </div>
+                    <div class="fw-exp-col">
+                        <h5>✅ Recommended For</h5>
+                        <ul><li><strong>${bestFor}</strong></li></ul>
+                        <h5 style="margin-top:0.75rem;">🛡️ Mitigations</h5>
+                        <ul>${mitigations.slice(0,2).map(m => `<li style="color:var(--green);">→ ${m}</li>`).join('')}</ul>
+                    </div>
+                </div>
+                <div class="fw-idx-strip">
+                    <span class="fw-idx-mini">AMI: <span style="color:${getGradeColor(ami.grade)}">${ami.score} (${ami.grade})</span> · ${ami.confidence}</span>
+                    <span class="fw-idx-mini">ARI: <span style="color:${getRiskColor(ari.riskLabel)}">${ari.score} (${ari.riskLabel})</span></span>
+                    <span class="fw-idx-mini">EPI: <span style="color:${getMomentumColor(epi.momentum)}">${epi.score} (${epi.momentum})</span></span>
+                    ${fw.githubUrl ? `<a href="${fw.githubUrl}" target="_blank" style="font-family:var(--font-mono);font-size:11px;color:var(--cyan);text-decoration:none;padding:3px 10px;background:var(--surface-3);border-radius:4px;">GitHub →</a>` : ''}
+                </div>
+            </td>
+        </tr>`;
+
+        return mainRow + expandRow;
+    }).join('');
+
+    // Attach click handlers for expanders
+    tbody.querySelectorAll('.expand-trigger').forEach(row => {
+        row.addEventListener('click', () => {
+            const fwId = row.dataset.fw;
+            const expander = tbody.querySelector(`[data-fw-expand="${fwId}"]`);
+            const wasOpen = expander.classList.contains('open');
+            // Close all
+            tbody.querySelectorAll('.fw-expander').forEach(e => e.classList.remove('open'));
+            tbody.querySelectorAll('.expand-trigger').forEach(r => r.classList.remove('expanded'));
+            // Toggle
+            if (!wasOpen) {
+                expander.classList.add('open');
+                row.classList.add('expanded');
             }
         });
+    });
+}
 
-        // Add scroll animation to cards
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+function buildMaturityRiskChart(frameworks) {
+    const ctx = document.getElementById('chartMaturityRisk');
+    if (!ctx) return;
+
+    const data = frameworks.map(fw => ({
+        x: fw.indices.AMI.score,
+        y: fw.indices.ARI.score,
+        r: Math.max(fw.indices.EPI.score / 8, 4),
+        name: fw.name,
+        id: fw.id
+    }));
+
+    const fwColors = {
+        'openclaw': COLORS.cyan,
+        'langchain': COLORS.green,
+        'n8n-make': COLORS.amber,
+        'clawdia': COLORS.purple,
+        'autogen': COLORS.rose,
+        'crewai': '#ff6b6b',
+        'vercel-ai-sdk': '#4ecdc4',
+        'openai-agents-sdk': '#45b7d1',
+        'semantic-kernel': '#96ceb4'
+    };
+
+    new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: data.map(d => ({
+                label: d.name,
+                data: [{ x: d.x, y: d.y, r: d.r }],
+                backgroundColor: (fwColors[d.id] || COLORS.cyan) + '55',
+                borderColor: fwColors[d.id] || COLORS.cyan,
+                borderWidth: 2
+            }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => {
+                            const d = data[ctx.datasetIndex];
+                            return `${d.name}: AMI ${d.x}, ARI ${d.y}, EPI ${Math.round(d.r * 8)}`;
+                        }
+                    }
                 }
-            });
-        }, {threshold: 0.1});
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'Agent Maturity Index (AMI) →', color: '#666', font: { size: 11 } },
+                    min: 0, max: 100,
+                    grid: { color: 'rgba(255,255,255,0.04)' }
+                },
+                y: {
+                    title: { display: true, text: '← Autonomy Risk Index (ARI)', color: '#666', font: { size: 11 } },
+                    min: 0, max: 100,
+                    reverse: false,
+                    grid: { color: 'rgba(255,255,255,0.04)' }
+                }
+            }
+        }
+    });
+}
 
-        document.querySelectorAll('.feature-card, .tool-card, .stat-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
+// Load frameworks.json and build everything
+fetch('/frameworks.json')
+    .then(r => r.json())
+    .then(data => {
+        FRAMEWORKS = data.frameworks;
+        buildIndexSnapshot(FRAMEWORKS);
+        buildComparisonTable(FRAMEWORKS);
+        buildMaturityRiskChart(FRAMEWORKS);
+
+        // Re-observe new fade-up elements
+        document.querySelectorAll('.idx-card').forEach(el => {
+            el.classList.add('fade-up');
+            fadeObserver2.observe(el);
         });
-    </script>
+    })
+    .catch(err => {
+        console.error('Failed to load frameworks.json:', err);
+        document.getElementById('indexGrid').innerHTML = '<p style="color:var(--red);text-align:center;padding:2rem;">Failed to load index data. <a href="/frameworks.json" style="color:var(--cyan);">View raw data →</a></p>';
+    });
+
+const fadeObserver2 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+// ==================== COPY CITATION ====================
+function copyCite(title) {
+    const cite = `"${title}" — AI Agent Landscape 2026, AI Tools Report, Feb 2026 Edition. https://ai-tools-report.vercel.app/agents-2026`;
+    navigator.clipboard.writeText(cite).then(() => {
+        event.target.textContent = '✓ Copied';
+        event.target.classList.add('copied');
+        setTimeout(() => {
+            event.target.textContent = '📋 Cite';
+            event.target.classList.remove('copied');
+        }, 2000);
+    });
+}
+
+// ==================== PLAYBOOK TABS ====================
+document.querySelectorAll('.playbook-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.playbook-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.playbook-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+});
+
+// ==================== FULL REPORT TOGGLE ====================
+document.getElementById('toggleReport').addEventListener('click', function() {
+    const section = document.getElementById('fullReport');
+    const expanded = section.classList.toggle('expanded');
+    this.textContent = expanded ? '📄 Collapse Full Report ↑' : '📄 Read Full 722-Line Report ↓';
+    if (expanded && !document.getElementById('reportContent').innerHTML) {
+        loadReport();
+    }
+});
+
+// ==================== LOAD MARKDOWN REPORT ====================
+async function loadReport() {
+    try {
+        const res = await fetch('/AGENTS_2026_UPDATE.md');
+        const md = await res.text();
+        
+        const renderer = new marked.Renderer();
+        let headingCount = 0;
+        renderer.heading = function({tokens, depth}) {
+            const text = this.parser.parseInline(tokens);
+            const slug = text.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-+|-+$/g, '');
+            const id = `heading-${headingCount++}`;
+            return `<h${depth} id="${id}">${text}</h${depth}>`;
+        };
+        
+        marked.setOptions({ renderer, breaks: false, gfm: true });
+        document.getElementById('reportContent').innerHTML = marked.parse(md);
+        buildTOC();
+        setupScrollSpy();
+    } catch (err) {
+        document.getElementById('reportContent').innerHTML = '<p style="color:var(--red);">Failed to load report. <a href="/AGENTS_2026_UPDATE.md" download>Download directly</a>.</p>';
+    }
+}
+
+function buildTOC() {
+    const toc = document.getElementById('toc');
+    const headings = document.querySelectorAll('.report-content h1[id], .report-content h2[id], .report-content h3[id]');
+    let tocHTML = '<div style="font-weight:600;color:var(--text-2);margin-bottom:0.75rem;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Contents</div>';
+
+    headings.forEach((h, i) => {
+        const level = h.tagName.toLowerCase();
+        if (level === 'h1' && i === 0) return;
+        const cls = level === 'h2' ? 'toc-h2' : level === 'h3' ? 'toc-h3' : 'toc-h2';
+        const text = h.textContent.replace(/\[.*?\]/g, '').trim();
+        if (text.length > 0 && text.length < 80) {
+            tocHTML += `<a href="#${h.id}" class="${cls}" data-target="${h.id}">${text}</a>`;
+        }
+    });
+
+    toc.innerHTML = tocHTML;
+}
+
+function setupScrollSpy() {
+    const tocLinks = document.querySelectorAll('.toc a[data-target]');
+    if (tocLinks.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                tocLinks.forEach(l => l.classList.remove('active'));
+                const active = document.querySelector(`.toc a[data-target="${entry.target.id}"]`);
+                if (active) active.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+
+    document.querySelectorAll('.report-content h1[id], .report-content h2[id], .report-content h3[id]').forEach(h => {
+        observer.observe(h);
+    });
+}
+
+document.getElementById('toc').addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && e.target.dataset.target) {
+        e.preventDefault();
+        const target = document.getElementById(e.target.dataset.target);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', '#' + e.target.dataset.target);
+        }
+    }
+});
+
+// ==================== INTERSECTION OBSERVER FOR FADE-UP ====================
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+</script>
+
 </body>
 </html>
