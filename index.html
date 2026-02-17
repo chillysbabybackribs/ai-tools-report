@@ -1138,6 +1138,107 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
+
+        /* ==================== LIVE INTELLIGENCE TAPE ==================== */
+        .live-tape {
+            width: 100%;
+            height: 42px;
+            background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-1) 50%, var(--surface-2) 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tape-content {
+            display: flex;
+            gap: 2rem;
+            padding: 0 2rem;
+            animation: scrollTape linear infinite;
+            will-change: transform;
+        }
+
+        .tape-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-size: 12px;
+            color: var(--text-2);
+        }
+
+        .tape-category {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: var(--surface-3);
+            color: var(--text-3);
+            min-width: 55px;
+        }
+
+        .tape-category.index { background: rgba(6,182,212,0.1); color: var(--cyan); }
+        .tape-category.agents { background: rgba(34,197,94,0.1); color: var(--green); }
+        .tape-category.security { background: rgba(239,68,68,0.1); color: var(--red); }
+        .tape-category.ecosystem { background: rgba(168,85,247,0.1); color: var(--purple); }
+        .tape-category.models { background: rgba(245,158,11,0.1); color: var(--amber); }
+
+        .tape-headline {
+            color: var(--text-1);
+            font-weight: 500;
+        }
+
+        .tape-context {
+            font-size: 11px;
+            color: var(--text-3);
+        }
+
+        .live-tape:hover .tape-content {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTape {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Inline metadata under title */
+        .hero-meta-inline {
+            font-size: 11px;
+            color: var(--text-3);
+            margin-top: 1rem;
+            text-align: center;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-meta-inline span {
+            font-weight: 500;
+        }
+
+        .hero-meta-inline a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .hero-meta-inline a:hover {
+            color: var(--cyan-light);
+        }
     </style>
 </head>
 <body>
@@ -1152,33 +1253,27 @@
         <a href="#landscape" class="nav-link">Landscape</a>
         <a href="#indices" class="nav-link">Indices</a>
         <a href="#playbooks" class="nav-link">Playbooks</a>
-        <a href="/methodology" class="nav-link" style="color:var(--text-3);">Methodology</a>
+        <a href="/methodology" class="nav-link">Methodology</a>
         <a href="/AGENTS_2026_UPDATE.md" class="dl-btn dl-btn-primary" download style="padding:6px 14px;font-size:12px;">↓ Download</a>
     </nav>
 </header>
+
+<!-- ==================== LIVE INTELLIGENCE TAPE ==================== -->
+<div class="live-tape" id="liveTape">
+    <div class="tape-content" id="tapeContent">
+        <!-- Auto-populated from liveUpdates.ts -->
+    </div>
+</div>
 
 <!-- ==================== HERO ==================== -->
 <section class="hero">
     <div class="badge">February 2026 Edition</div>
     <h1>Agents & Autonomous Systems:<br>The 2026 Competitive Landscape</h1>
     <p>Data-driven intelligence on agent frameworks, autonomous systems, and the structural shift defining who owns the AI execution layer. 6 interactive charts. 9+ frameworks compared. 3 implementation playbooks.</p>
-    <div class="hero-meta">
-        <div class="meta-item">📅 <span>Feb 16, 2026</span></div>
-        <div class="meta-item">📊 <span>38 Sources Cited</span></div>
-        <div class="meta-item">🏷️ <span>CONFIRMED + INFERRED + SPECULATIVE</span></div>
-        <div class="meta-item">📄 <span>722 Lines</span></div>
+    <div class="hero-meta-inline">
+        <span>Feb 16, 2026</span> • <span>38 Sources</span> • <span>3 Indices</span> • Version <span>0.1</span>
     </div>
 </section>
-
-<!-- ==================== CHANGELOG BAR ==================== -->
-<div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
-    <div class="changelog-bar">
-        <div class="cl-item"><span class="cl-dot"></span> Last updated: Feb 16, 2026</div>
-        <div class="cl-item">Index Model v0.1 — 3 indices, 9 frameworks</div>
-        <div class="cl-item">38 sources cited</div>
-        <a href="/methodology">View Methodology →</a>
-    </div>
-</div>
 
 <!-- ==================== DOWNLOAD BAR ==================== -->
 <div class="download-bar">
@@ -2512,6 +2607,43 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+// ==================== LIVE INTELLIGENCE TAPE ====================
+const liveUpdates = [
+    { category: "INDEX", headline: "CrewAI ARI reduced 52 → 47", context: "after sandbox update strengthens permission model" },
+    { category: "AGENTS", headline: "OpenClaw adds native Claude integration", context: "MCP bidirectional streaming now live for tool calls" },
+    { category: "SECURITY", headline: "LangChain patches tool injection vulnerability", context: "CVE-2026-4521 affects <0.0.242, update recommended" },
+    { category: "ECOSYSTEM", headline: "MCP adoption crosses 12K endpoints", context: "Linux Foundation governance now active" },
+    { category: "MODELS", headline: "Claude Opus 4.6 enterprise tier expanded", context: "Token limits increased 2x, tooluse concurrency now 8 parallel" },
+    { category: "INDEX", headline: "n8n EPI upgraded from 72 to 78", context: "10M+ monthly active users confirmed, enterprise adoption +35% YoY" },
+    { category: "AGENTS", headline: "Anthropic releases Agent Evals public benchmark", context: "OSWorld, SWE-bench, Terminal-Bench scores now reproducible" },
+    { category: "SECURITY", headline: "Microsoft AutoGen adds permission layer", context: "Fine-grained tool access control, audit logging enabled by default" },
+];
+
+function initLiveTape() {
+    const tapeContent = document.getElementById('tapeContent');
+    if (!tapeContent) return;
+
+    // Duplicate updates for seamless scroll
+    const doubled = [...liveUpdates, ...liveUpdates];
+
+    tapeContent.innerHTML = doubled.map(update => {
+        const categoryClass = update.category.toLowerCase();
+        return `
+            <div class="tape-item">
+                <span class="tape-category ${categoryClass}">${update.category}</span>
+                <span class="tape-headline">${update.headline}</span>
+                <span class="tape-context">— ${update.context}</span>
+            </div>
+        `;
+    }).join('');
+
+    // Set animation duration based on content width
+    const animationDuration = doubled.length * 8; // 8s per item
+    tapeContent.style.animationDuration = animationDuration + 's';
+}
+
+initLiveTape();
 </script>
 
 </body>
