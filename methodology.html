@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Methodology — AI Tools Landscape Report 2026</title>
+    <meta name="description" content="Scoring methodology for AMI, ARI, and EPI proprietary indices. Transparent definitions, dimension weights, confidence labeling, and version history.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #06b6d4;
+            --cyan-dim: rgba(6,182,212,0.08);
+            --green: #34d59a;
+            --green-dim: rgba(52,213,154,0.08);
+            --amber: #f59e0b;
+            --amber-dim: rgba(245,158,11,0.08);
+            --red: #ef4444;
+            --red-dim: rgba(239,68,68,0.08);
+            --purple: #a78bfa;
+            --purple-dim: rgba(167,139,250,0.08);
+            --rose: #fb7185;
+            --surface-1: #0a0a0a;
+            --surface-2: #111111;
+            --surface-3: #1a1a1a;
+            --surface-4: #262626;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-1: #f5f5f5;
+            --text-2: #a1a1a1;
+            --text-3: #666;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: dark; scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: #000; color: var(--text-2); line-height: 1.7; font-size: 15px; }
+
+        .header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 56px;
+        }
+        .logo { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; text-decoration: none; }
+        .nav-menu { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-link { color: var(--text-3); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+        .nav-link:hover { color: var(--text-2); }
+        .nav-link.active { color: var(--cyan); }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+        .breadcrumb { font-size: 12px; color: var(--text-3); margin-bottom: 2rem; }
+        .breadcrumb a { color: var(--text-3); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--cyan); }
+
+        h1 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+        h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: #fff; margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text-1); margin: 2rem 0 0.75rem; }
+        h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text-1); margin: 1.5rem 0 0.5rem; }
+        p { margin-bottom: 1rem; }
+        ul, ol { margin: 0.5rem 0 1.25rem 1.5rem; }
+        li { margin-bottom: 0.3rem; }
+        strong { color: var(--text-1); }
+        code { font-family: var(--font-mono); background: var(--surface-3); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; color: var(--cyan); }
+        a { color: var(--cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .subtitle { font-size: 1.05rem; color: var(--text-2); margin-bottom: 2rem; line-height: 1.7; }
+
+        .version-badge {
+            display: inline-block; padding: 4px 12px; background: var(--cyan-dim); border: 1px solid rgba(6,182,212,0.2);
+            border-radius: 20px; font-size: 11px; font-weight: 600; color: var(--cyan); letter-spacing: 0.05em; margin-bottom: 1.5rem;
+        }
+
+        .index-card {
+            background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+            padding: 1.75rem; margin-bottom: 1.5rem;
+        }
+        .index-card h3 { margin-top: 0; }
+
+        .index-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+        .index-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .index-range { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-3); }
+
+        .dim-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .dim-table th { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--border-hover); color: var(--text-3); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .dim-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-2); }
+        .dim-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+        .weight-bar { display: inline-flex; align-items: center; gap: 6px; }
+        .weight-fill { height: 8px; border-radius: 4px; background: var(--cyan); }
+        .weight-track { height: 8px; border-radius: 4px; background: var(--surface-4); width: 60px; overflow: hidden; }
+        .weight-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-3); min-width: 28px; }
+
+        .grade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1rem 0; }
+        .grade-box { text-align: center; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); }
+        .grade-letter { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+        .grade-range { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-3); margin-top: 4px; }
+
+        .confidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1rem 0; }
+        .conf-card { padding: 1rem; border-radius: 8px; border: 1px solid var(--border); }
+        .conf-label { font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .conf-desc { font-size: 0.8rem; color: var(--text-3); line-height: 1.6; }
+
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; }
+        .tag-confirmed { background: rgba(52,213,154,0.12); color: var(--green); }
+        .tag-inferred { background: rgba(245,158,11,0.12); color: var(--amber); }
+        .tag-speculative { background: rgba(167,139,250,0.12); color: var(--purple); }
+
+        .risk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 1rem 0; }
+        .risk-box { text-align: center; padding: 0.75rem; border-radius: 8px; }
+        .risk-label { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; }
+        .risk-range { font-family: var(--font-mono); font-size: 0.75rem; margin-top: 4px; }
+
+        .changelog { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+        .changelog-entry { display: flex; gap: 1rem; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+        .changelog-entry:last-child { border-bottom: none; }
+        .changelog-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); min-width: 80px; }
+        .changelog-text { font-size: 0.85rem; }
+
+        .formula-box {
+            background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+            padding: 1.25rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-2);
+            line-height: 1.8; margin: 1rem 0; overflow-x: auto;
+        }
+
+        .footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-3); font-size: 0.8rem; }
+        .footer a { color: var(--text-2); text-decoration: none; }
+        .footer a:hover { color: var(--cyan); }
+
+        @media (max-width: 640px) {
+            .container { padding: 2rem 1rem; }
+            .grade-grid, .risk-grid { grid-template-columns: repeat(2, 1fr); }
+            .confidence-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="/" class="logo">AI Tools Report</a>
+    <nav class="nav-menu">
+        <a href="/" class="nav-link">Main Report</a>
+        <a href="/agents-2026" class="nav-link">Agents 2026</a>
+        <a href="/methodology" class="nav-link active">Methodology</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="breadcrumb"><a href="/">Home</a> → <a href="/agents-2026">Agents 2026</a> → Methodology</div>
+
+    <div class="version-badge">INDEX MODEL v0.1 — FEBRUARY 2026</div>
+    <h1>Scoring Methodology</h1>
+    <p class="subtitle">
+        This document defines the three proprietary indices used in the AI Tools Landscape Report: 
+        <strong>Agent Maturity Index (AMI)</strong>, <strong>Autonomy Risk Index (ARI)</strong>, and 
+        <strong>Ecosystem Power Index (EPI)</strong>. All dimensions, weights, and grading criteria are published here 
+        for transparency and reproducibility.
+    </p>
+
+    <!-- ==================== PRINCIPLES ==================== -->
+    <h2>Guiding Principles</h2>
+    <ol>
+        <li><strong>Transparency over authority.</strong> Every score is decomposable into its dimension scores. Every dimension score links to evidence.</li>
+        <li><strong>Confidence labeling is mandatory.</strong> No score is presented without a <span class="tag tag-confirmed">CONFIRMED</span>, <span class="tag tag-inferred">INFERRED</span>, or <span class="tag tag-speculative">SPECULATIVE</span> tag.</li>
+        <li><strong>Scores can change.</strong> Indices are versioned. When new evidence arrives, scores update. The changelog records every change.</li>
+        <li><strong>No pay-for-score.</strong> Sponsorship does not affect index scores. Frameworks are scored identically regardless of commercial relationship.</li>
+        <li><strong>Methodology evolves.</strong> Dimensions and weights may change between versions. All changes are documented with rationale.</li>
+    </ol>
+
+    <!-- ==================== CONFIDENCE LEVELS ==================== -->
+    <h2>Confidence Labels</h2>
+    <p>Every data point and score carries one of three confidence labels:</p>
+
+    <div class="confidence-grid">
+        <div class="conf-card" style="border-left: 3px solid var(--green);">
+            <div class="conf-label" style="color: var(--green);">✓ CONFIRMED</div>
+            <div class="conf-desc">
+                Based on primary sources: official documentation, published reports, security audits, 
+                GitHub repository data, or direct source code inspection. Verifiable by third parties.
+            </div>
+        </div>
+        <div class="conf-card" style="border-left: 3px solid var(--amber);">
+            <div class="conf-label" style="color: var(--amber);">◐ INFERRED</div>
+            <div class="conf-desc">
+                Reasonable conclusion drawn from confirmed data + domain expertise. Example: inferring enterprise 
+                penetration from known partnerships, pricing tiers, and job postings. Directionally reliable but not directly verified.
+            </div>
+        </div>
+        <div class="conf-card" style="border-left: 3px solid var(--purple);">
+            <div class="conf-label" style="color: var(--purple);">◌ SPECULATIVE</div>
+            <div class="conf-desc">
+                Forward-looking projection or estimate based on trends. Example: projected enterprise adoption 
+                rates for Q3 2026+. Used sparingly and always labeled. May be wrong.
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== AMI ==================== -->
+    <h2>Index 1: Agent Maturity Index (AMI)</h2>
+    
+    <div class="index-card">
+        <div class="index-header">
+            <div class="index-name">AMI — Agent Maturity Index</div>
+            <div class="index-range">Scale: 0–100</div>
+        </div>
+        <p>Measures how <strong>production-ready</strong> an agent framework or system is. A high AMI score means the system 
+        can be deployed in production with reasonable confidence in reliability, security, and operational control.</p>
+
+        <h4>Dimensions & Weights</h4>
+        <table class="dim-table">
+            <thead>
+                <tr><th>Dimension</th><th>Weight</th><th>What It Measures</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Reliability</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:100%"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Uptime, error handling, recovery from failures, consistent output quality</td>
+                </tr>
+                <tr>
+                    <td><strong>Observability</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>Logging, tracing, debugging tools, execution visibility</td>
+                </tr>
+                <tr>
+                    <td><strong>Tooling Ecosystem</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>Available integrations, plugins, MCP servers, third-party tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Security Posture</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:100%"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Vulnerability count, CVEs, audit results, secure defaults</td>
+                </tr>
+                <tr>
+                    <td><strong>Execution Control</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>Permission models, sandboxing, human-in-the-loop, approval gates</td>
+                </tr>
+                <tr>
+                    <td><strong>Deployment Maturity</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>CI/CD support, containerization, scaling options, enterprise readiness</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Scoring Formula</h4>
+        <div class="formula-box">
+AMI = Σ (dimension_score × dimension_weight)
+
+Where:
+  dimension_score = 0–100 (assessed per framework per dimension)
+  dimension_weight = percentage weight (all weights sum to 100%)
+
+Example (OpenClaw):
+  AMI = (55×0.20) + (60×0.15) + (75×0.15) + (18×0.20) + (45×0.15) + (60×0.15)
+      = 11.0 + 9.0 + 11.25 + 3.6 + 6.75 + 9.0
+      = 50.6 → rounded to 52 (with qualitative adjustment for evidence strength)
+        </div>
+
+        <h4>Letter Grades</h4>
+        <div class="grade-grid">
+            <div class="grade-box" style="background: var(--green-dim); border-color: rgba(52,213,154,0.2);">
+                <div class="grade-letter" style="color: var(--green);">A</div>
+                <div class="grade-range">80–100</div>
+            </div>
+            <div class="grade-box" style="background: var(--cyan-dim); border-color: rgba(6,182,212,0.2);">
+                <div class="grade-letter" style="color: var(--cyan);">B</div>
+                <div class="grade-range">60–79</div>
+            </div>
+            <div class="grade-box" style="background: var(--amber-dim); border-color: rgba(245,158,11,0.2);">
+                <div class="grade-letter" style="color: var(--amber);">C</div>
+                <div class="grade-range">40–59</div>
+            </div>
+            <div class="grade-box" style="background: var(--red-dim); border-color: rgba(239,68,68,0.2);">
+                <div class="grade-letter" style="color: var(--red);">D</div>
+                <div class="grade-range">0–39</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARI ==================== -->
+    <h2>Index 2: Autonomy Risk Index (ARI)</h2>
+    
+    <div class="index-card">
+        <div class="index-header">
+            <div class="index-name">ARI — Autonomy Risk Index</div>
+            <div class="index-range">Scale: 0–100 (higher = more risk)</div>
+        </div>
+        <p>Measures <strong>risk exposure</strong> when running a system autonomously. Unlike AMI (where higher is better), 
+        ARI is an <strong>inverse score</strong> — lower is safer. A high ARI means the system poses significant risk 
+        when running without continuous human oversight.</p>
+
+        <h4>Dimensions & Weights</h4>
+        <table class="dim-table">
+            <thead>
+                <tr><th>Dimension</th><th>Weight</th><th>What It Measures (Higher = More Risk)</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Permission Model Strength</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:100%;background:var(--red)"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Weak/missing permission boundaries = high score. Granular enforcement = low score.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sandboxing / Isolation</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:90%;background:var(--red)"></div></div>
+                            <span class="weight-label">18%</span>
+                        </div>
+                    </td>
+                    <td>No isolation = high score. Container/VM isolation with network segmentation = low score.</td>
+                </tr>
+                <tr>
+                    <td><strong>Default Network Exposure</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:90%;background:var(--red)"></div></div>
+                            <span class="weight-label">18%</span>
+                        </div>
+                    </td>
+                    <td>Open ports, public endpoints = high score. No listening services = low score.</td>
+                </tr>
+                <tr>
+                    <td><strong>Secret Handling</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%;background:var(--red)"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>Plaintext keys = high score. Encrypted vault with rotation = low score.</td>
+                </tr>
+                <tr>
+                    <td><strong>Human-in-the-Loop Controls</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:75%;background:var(--red)"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>No approval gates = high score. Mandatory review for destructive actions = low score.</td>
+                </tr>
+                <tr>
+                    <td><strong>Audit Logging</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:70%;background:var(--red)"></div></div>
+                            <span class="weight-label">14%</span>
+                        </div>
+                    </td>
+                    <td>No logs = high score. Tamper-proof audit trail with SIEM export = low score.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Risk Labels</h4>
+        <div class="risk-grid">
+            <div class="risk-box" style="background: var(--green-dim);">
+                <div class="risk-label" style="color: var(--green);">Low</div>
+                <div class="risk-range" style="color: var(--text-3);">0–25</div>
+            </div>
+            <div class="risk-box" style="background: var(--amber-dim);">
+                <div class="risk-label" style="color: var(--amber);">Medium</div>
+                <div class="risk-range" style="color: var(--text-3);">26–50</div>
+            </div>
+            <div class="risk-box" style="background: rgba(239,68,68,0.06);">
+                <div class="risk-label" style="color: var(--rose);">High</div>
+                <div class="risk-range" style="color: var(--text-3);">51–75</div>
+            </div>
+            <div class="risk-box" style="background: var(--red-dim);">
+                <div class="risk-label" style="color: var(--red);">Critical</div>
+                <div class="risk-range" style="color: var(--text-3);">76–100</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EPI ==================== -->
+    <h2>Index 3: Ecosystem Power Index (EPI)</h2>
+    
+    <div class="index-card">
+        <div class="index-header">
+            <div class="index-name">EPI — Ecosystem Power Index</div>
+            <div class="index-range">Scale: 0–100</div>
+        </div>
+        <p>Measures <strong>distribution strength, community gravity, and ecosystem reach</strong>. A high EPI indicates 
+        the framework has strong adoption, vendor integration, and community momentum — making it harder to displace 
+        and easier to hire for.</p>
+
+        <h4>Dimensions & Weights</h4>
+        <table class="dim-table">
+            <thead>
+                <tr><th>Dimension</th><th>Weight</th><th>What It Measures</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Adoption Signals</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:100%;background:var(--purple)"></div></div>
+                            <span class="weight-label">25%</span>
+                        </div>
+                    </td>
+                    <td>GitHub stars, npm downloads, Docker pulls, community size, Stack Overflow activity</td>
+                </tr>
+                <tr>
+                    <td><strong>Vendor Integration Breadth</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:80%;background:var(--purple)"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Number of platforms, IDEs, services with native support or official integration</td>
+                </tr>
+                <tr>
+                    <td><strong>Enterprise Penetration</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:80%;background:var(--purple)"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Known enterprise deployments, SOC2 compliance, support contracts, case studies</td>
+                </tr>
+                <tr>
+                    <td><strong>Standard Alignment</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:60%;background:var(--purple)"></div></div>
+                            <span class="weight-label">15%</span>
+                        </div>
+                    </td>
+                    <td>MCP support, OpenAPI compliance, tool protocol adherence, interoperability</td>
+                </tr>
+                <tr>
+                    <td><strong>Release Velocity</strong></td>
+                    <td>
+                        <div class="weight-bar">
+                            <div class="weight-track"><div class="weight-fill" style="width:80%;background:var(--purple)"></div></div>
+                            <span class="weight-label">20%</span>
+                        </div>
+                    </td>
+                    <td>Commit frequency, release cadence, maintainer activity, issue response time</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Momentum Tags</h4>
+        <ul>
+            <li><strong>Rising:</strong> EPI score increasing >10 points quarter-over-quarter. Example: OpenClaw (new entrant, explosive growth).</li>
+            <li><strong>Stable:</strong> EPI score change within ±10 points. Example: LangChain (established, consistent community).</li>
+            <li><strong>Declining:</strong> EPI score decreasing >10 points quarter-over-quarter. No current frameworks in this category.</li>
+        </ul>
+    </div>
+
+    <!-- ==================== HOW SCORES CAN CHANGE ==================== -->
+    <h2>How Scores Change</h2>
+    <p>Indices are <strong>living scores</strong>. They update when:</p>
+    <ul>
+        <li><strong>New evidence emerges</strong> — A security audit, a new release, a partnership announcement</li>
+        <li><strong>Corrections are submitted</strong> — Framework maintainers or community members can dispute scores with evidence</li>
+        <li><strong>Methodology updates</strong> — Dimension weights may shift between versions as the landscape evolves</li>
+        <li><strong>Time passes</strong> — Enterprise penetration and adoption signals change quarterly</li>
+    </ul>
+    <p>All changes are logged in the version history below. Previous scores are preserved for comparison.</p>
+
+    <h3>Score Dispute Process</h3>
+    <p>Framework maintainers can dispute scores by providing counter-evidence. The process:</p>
+    <ol>
+        <li>Open a GitHub issue on the <a href="https://github.com/chillysbabybackribs/Clawdia">report repository</a> with the tag <code>score-dispute</code></li>
+        <li>Cite specific dimension(s) and provide evidence supporting a different score</li>
+        <li>We review within 7 days and publish a response with rationale</li>
+        <li>If accepted, scores update in the next edition with changelog entry</li>
+    </ol>
+
+    <!-- ==================== LIMITATIONS ==================== -->
+    <h2>Known Limitations</h2>
+    <ul>
+        <li><strong>Subjectivity in weighting.</strong> The choice of 20% for Security vs 15% for Observability is a judgment call. Different use cases may warrant different weights.</li>
+        <li><strong>Inferred scores are estimates.</strong> Where direct evidence isn't available (e.g., enterprise penetration for private companies), we use proxies like job postings, pricing tiers, and partnership announcements.</li>
+        <li><strong>Snapshot in time.</strong> Scores reflect the state as of the edition date. Fast-moving projects may have changed significantly since publication.</li>
+        <li><strong>Conflict of interest.</strong> Clawdia is developed by the same team that produces this report. We address this by: (a) scoring Clawdia using the same methodology as all other frameworks, (b) being transparent about low scores (EPI: 8, AMI: 44), and (c) publishing this methodology for independent verification.</li>
+        <li><strong>No formal audit.</strong> These indices are not produced by a standards body. They are analytical scores by an industry research publication.</li>
+    </ul>
+
+    <!-- ==================== VERSION HISTORY ==================== -->
+    <h2>Version History</h2>
+    
+    <div class="changelog">
+        <div class="changelog-entry">
+            <span class="changelog-date">v0.1</span>
+            <span class="changelog-text">
+                <strong>February 16, 2026 — Initial Release</strong><br>
+                3 indices (AMI, ARI, EPI) covering 9 frameworks. 38 cited sources. 
+                Dimension weights established. Confidence labeling system introduced.
+                Grading and risk label thresholds defined.
+            </span>
+        </div>
+    </div>
+
+    <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-3);">
+        <strong>Data sources:</strong> <a href="/AGENTS_2026_SOURCES.md" download>View all 38 sources</a> · 
+        <strong>Raw data:</strong> <a href="/frameworks.json">frameworks.json</a> · 
+        <strong>Report:</strong> <a href="/agents-2026">Agents 2026 Edition</a>
+    </p>
+</div>
+
+<footer class="footer">
+    <p><a href="/">AI Tools Report</a> · <a href="/agents-2026">Agents 2026</a> · <a href="/methodology">Methodology</a></p>
+    <p style="margin-top:0.5rem;">© 2026 AI Tools Report. Index Model v0.1. All methodology published for transparency.</p>
+</footer>
+
+</body>
+</html>

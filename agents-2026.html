@@ -853,6 +853,290 @@
             .nav-link { font-size: 11px; }
             .matrix-container { aspect-ratio: auto; }
             .matrix-quadrant { padding: 1rem; }
+            .idx-grid { grid-template-columns: 1fr !important; }
+            .idx-header-row { flex-direction: column; gap: 0.5rem; }
+            .idx-legend { flex-direction: column; }
+        }
+
+        /* ==================== INDEX SNAPSHOT ==================== */
+        .idx-section {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .idx-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--green), var(--purple));
+        }
+        .idx-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .idx-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .idx-version {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-3);
+            padding: 3px 10px;
+            background: var(--surface-3);
+            border-radius: 4px;
+        }
+        .idx-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+        }
+        .idx-subtitle a { color: var(--cyan); text-decoration: none; font-weight: 500; }
+        .idx-subtitle a:hover { text-decoration: underline; }
+
+        .idx-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .idx-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .idx-card:hover { border-color: var(--border-hover); }
+        .idx-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .idx-fw-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .idx-fw-cat {
+            font-size: 10px;
+            color: var(--text-3);
+            padding: 2px 8px;
+            background: var(--surface-3);
+            border-radius: 4px;
+        }
+        .idx-scores {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+        .idx-score-block { text-align: center; }
+        .idx-score-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 4px;
+        }
+        .idx-score-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .idx-score-tag {
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 3px;
+            letter-spacing: 0.02em;
+        }
+        .idx-grade-A { color: var(--green); }
+        .idx-grade-B { color: var(--cyan); }
+        .idx-grade-C { color: var(--amber); }
+        .idx-grade-D { color: var(--red); }
+        .idx-risk-Low { color: var(--green); }
+        .idx-risk-Medium { color: var(--amber); }
+        .idx-risk-High { color: var(--rose); }
+        .idx-risk-Critical { color: var(--red); }
+        .idx-momentum-Rising { color: var(--green); }
+        .idx-momentum-Stable { color: var(--cyan); }
+        .idx-momentum-Declining { color: var(--red); }
+
+        .idx-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .idx-legend-item {
+            font-size: 11px;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .idx-legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        /* ==================== FRAMEWORK EXPANDERS ==================== */
+        .fw-expander {
+            display: none;
+        }
+        .fw-expander.open {
+            display: table-row;
+        }
+        .fw-expander-cell {
+            padding: 1rem 1rem 1.25rem !important;
+            background: var(--surface-1);
+            border-bottom: 1px solid var(--border);
+        }
+        .fw-expander-inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        @media (max-width: 768px) {
+            .fw-expander-inner { grid-template-columns: 1fr; }
+        }
+        .fw-exp-col h5 {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 0.5rem;
+        }
+        .fw-exp-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-2);
+        }
+        .fw-exp-col li {
+            padding: 2px 0;
+            line-height: 1.5;
+        }
+        .fw-exp-col li::before {
+            margin-right: 4px;
+        }
+        .fw-idx-strip {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .fw-idx-mini {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: var(--surface-3);
+        }
+        .expand-trigger {
+            cursor: pointer;
+            user-select: none;
+        }
+        .expand-trigger td:first-child::after {
+            content: ' ▸';
+            font-size: 10px;
+            color: var(--text-3);
+            transition: transform 0.2s;
+        }
+        .expand-trigger.expanded td:first-child::after {
+            content: ' ▾';
+            color: var(--cyan);
+        }
+
+        /* ==================== COPY CITATION ==================== */
+        .cite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            background: var(--surface-3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-3);
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .cite-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+        .cite-btn.copied {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* ==================== CHANGELOG ==================== */
+        .changelog-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-3);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .changelog-bar a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .changelog-bar a:hover { text-decoration: underline; }
+        .cl-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cl-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        /* ==================== WATCH BADGE ==================== */
+        .watch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background: rgba(245,158,11,0.08);
+            border: 1px solid rgba(245,158,11,0.2);
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -866,7 +1150,9 @@
         <a href="#insights" class="nav-link active">Key Insights</a>
         <a href="#charts" class="nav-link">Data</a>
         <a href="#landscape" class="nav-link">Landscape</a>
+        <a href="#indices" class="nav-link">Indices</a>
         <a href="#playbooks" class="nav-link">Playbooks</a>
+        <a href="/methodology" class="nav-link" style="color:var(--text-3);">Methodology</a>
         <a href="/AGENTS_2026_UPDATE.md" class="dl-btn dl-btn-primary" download style="padding:6px 14px;font-size:12px;">↓ Download</a>
     </nav>
 </header>
@@ -883,6 +1169,16 @@
         <div class="meta-item">📄 <span>722 Lines</span></div>
     </div>
 </section>
+
+<!-- ==================== CHANGELOG BAR ==================== -->
+<div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="changelog-bar">
+        <div class="cl-item"><span class="cl-dot"></span> Last updated: Feb 16, 2026</div>
+        <div class="cl-item">Index Model v0.1 — 3 indices, 9 frameworks</div>
+        <div class="cl-item">38 sources cited</div>
+        <a href="/methodology">View Methodology →</a>
+    </div>
+</div>
 
 <!-- ==================== DOWNLOAD BAR ==================== -->
 <div class="download-bar">
@@ -905,35 +1201,50 @@
             <div class="insight-number">185K★</div>
             <h3>OpenClaw → OpenAI Pipeline Confirmed</h3>
             <p>Creator Peter Steinberger joins OpenAI. OpenClaw moves to independent foundation with OpenAI backing. 185K GitHub stars in 6 weeks — fastest open-source agent adoption ever recorded. But: 512 vulnerabilities found in January audit.</p>
-            <span class="tag tag-confirmed">CONFIRMED — Reuters, Feb 15</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Reuters, Feb 15</span>
+                <button class="cite-btn" onclick="copyCite('OpenClaw → OpenAI Pipeline Confirmed')">📋 Cite</button>
+            </div>
         </div>
 
         <div class="insight-card insight-accent-green fade-up">
             <div class="insight-number">72.7%</div>
             <h3>Claude Opus 4.6 Sets Agent Benchmark Record</h3>
             <p>72.7% on OSWorld (autonomous computer use), 80.8% SWE-bench, 65.4% Terminal-Bench. Anthropic now holds the highest published score for autonomous computer control — but lacks a first-party agent framework.</p>
-            <span class="tag tag-confirmed">CONFIRMED — Anthropic, Feb 5</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Anthropic, Feb 5</span>
+                <button class="cite-btn" onclick="copyCite('Claude Opus 4.6 Sets Agent Benchmark Record')">📋 Cite</button>
+            </div>
         </div>
 
         <div class="insight-card insight-accent-amber fade-up">
             <div class="insight-number">5%→40%</div>
             <h3>Enterprise Agent Adoption: 8× Growth in 2 Years</h3>
             <p>Gartner: 5% of enterprise apps used AI agents in 2024 → projected 40% by end of 2026. This isn't experimental anymore. Enterprises are deploying agents in production workflows at scale.</p>
-            <span class="tag tag-confirmed">CONFIRMED — Gartner, Aug 2025</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Gartner, Aug 2025</span>
+                <button class="cite-btn" onclick="copyCite('Enterprise Agent Adoption: 8× Growth in 2 Years')">📋 Cite</button>
+            </div>
         </div>
 
         <div class="insight-card insight-accent-red fade-up">
             <div class="insight-number">512</div>
             <h3>Agent Security Is Now a Real Crisis</h3>
             <p>OpenClaw: 512 vulnerabilities (Kaspersky), 40,214 exposed instances (SecurityScorecard), 3 published CVEs. The gap between agent capability and agent security is widening — and enterprises are noticing.</p>
-            <span class="tag tag-confirmed">CONFIRMED — Kaspersky, Feb 2026</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Kaspersky, Feb 2026</span>
+                <button class="cite-btn" onclick="copyCite('Agent Security Is Now a Real Crisis')">📋 Cite</button>
+            </div>
         </div>
 
         <div class="insight-card insight-accent-purple fade-up">
             <div class="insight-number">10K+</div>
             <h3>MCP Becomes the Agent Connectivity Standard</h3>
             <p>Anthropic's Model Context Protocol: 10,000+ public servers, adopted by ChatGPT, Cursor, Gemini, VS Code, Copilot. Now under Linux Foundation governance. The tool layer is standardizing — the orchestration layer is not.</p>
-            <span class="tag tag-confirmed">CONFIRMED — Anthropic, Dec 2025</span>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;">
+                <span class="tag tag-confirmed">CONFIRMED — Anthropic, Dec 2025</span>
+                <button class="cite-btn" onclick="copyCite('MCP Becomes the Agent Connectivity Standard')">📋 Cite</button>
+            </div>
         </div>
     </div>
 </section>
@@ -974,6 +1285,46 @@
             <div class="stat-label">Enterprise Agent Adoption</div>
             <div class="stat-context">Projected by EOY 2026 — up from 5% in 2024</div>
         </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ==================== PROPRIETARY INDEX SNAPSHOT ==================== -->
+<section class="section" id="indices">
+    <div class="section-header">
+        <div class="section-label">Proprietary Indices</div>
+        <h2>Framework Intelligence — February 2026</h2>
+        <p>Three indices measuring maturity, risk, and ecosystem power. Each score is decomposable, evidence-linked, and confidence-labeled.</p>
+    </div>
+
+    <div class="idx-section fade-up">
+        <div class="idx-header-row">
+            <div class="idx-title">Agent Framework Index Snapshot</div>
+            <div class="idx-version">v0.1 · Feb 2026 · 9 frameworks · 38 sources</div>
+        </div>
+        <div class="idx-subtitle">
+            Scores derived from 6-dimension weighted analysis. All methodology published. 
+            <a href="/methodology">View full methodology →</a>
+        </div>
+
+        <div class="idx-grid" id="indexGrid">
+            <!-- Populated by JS from frameworks.json -->
+        </div>
+
+        <div class="idx-legend">
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--cyan)"></span> AMI: Agent Maturity (0–100, higher = more mature)</div>
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--red)"></span> ARI: Autonomy Risk (0–100, higher = more risk)</div>
+            <div class="idx-legend-item"><span class="idx-legend-dot" style="background:var(--purple)"></span> EPI: Ecosystem Power (0–100, higher = more reach)</div>
+        </div>
+    </div>
+
+    <!-- AMI vs ARI Scatter Plot -->
+    <div class="chart-card full-width fade-up" style="margin-top:1.5rem;">
+        <h3>Maturity vs. Risk — The Tradeoff Map</h3>
+        <div class="chart-subtitle">AMI (maturity) on X-axis vs ARI (risk) on Y-axis. Ideal position: bottom-right (mature + low risk). Size = EPI (ecosystem power).</div>
+        <canvas id="chartMaturityRisk" style="max-height:380px;"></canvas>
+        <div class="chart-source">Source: AI Tools Report proprietary indices · <a href="/methodology" style="color:var(--cyan);">Methodology</a></div>
     </div>
 </section>
 
@@ -1121,7 +1472,7 @@
                     <li><span class="eco-dot" style="background:var(--green)"></span> Claude Computer Use</li>
                     <li><span class="eco-dot" style="background:var(--green)"></span> MCP (Linux Foundation)</li>
                     <li><span class="eco-dot" style="background:var(--green)"></span> Claude Connectors (75+)</li>
-                    <li><span class="eco-dot" style="background:var(--green)"></span> Clawdia (community)</li>
+                    <li><span class="eco-dot" style="background:var(--green)"></span> <a href="https://github.com/chillysbabybackribs/Clawdia" style="color:var(--text-2);text-decoration:none;" title="View on GitHub">Clawdia</a> <span class="watch-badge">Project to Watch</span></li>
                     <li><span class="eco-dot" style="background:var(--green)"></span> Tool Use API</li>
                 </ul>
             </div>
@@ -1166,116 +1517,31 @@
     <div class="section-header">
         <div class="section-label">Framework Deep Dive</div>
         <h2>Agent Frameworks: Head-to-Head</h2>
-        <p>9 frameworks scored across 6 dimensions. Visual score bars + detailed comparison.</p>
+        <p>9 frameworks scored across 6 radar dimensions + 3 proprietary indices. Click any row to expand intelligence detail.</p>
     </div>
 
     <div class="chart-card full-width fade-up" style="overflow-x:auto;">
-        <table class="comparison-table">
+        <table class="comparison-table" id="comparisonTable">
             <thead>
                 <tr>
                     <th>Framework</th>
+                    <th>AMI</th>
+                    <th>ARI</th>
+                    <th>EPI</th>
                     <th>Reasoning</th>
                     <th>Ecosystem</th>
-                    <th>Autonomy</th>
                     <th>Security</th>
-                    <th>Distribution</th>
-                    <th>Dev Control</th>
-                    <th>Best For</th>
+                    <th>Autonomy</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>OpenClaw</td>
-                    <td><span class="score-bar" title="3/5"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Rapid prototyping, coding agents</td>
-                </tr>
-                <tr>
-                    <td>LangChain</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Complex chains, enterprise RAG</td>
-                </tr>
-                <tr>
-                    <td>n8n / Make</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">No-code automation, workflows</td>
-                </tr>
-                <tr>
-                    <td>Clawdia</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Local-first autonomy, security-critical</td>
-                </tr>
-                <tr>
-                    <td>AutoGen</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Multi-agent research, Microsoft stack</td>
-                </tr>
-                <tr>
-                    <td>CrewAI</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Role-based multi-agent teams</td>
-                </tr>
-                <tr>
-                    <td>Vercel AI SDK</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">Next.js apps, streaming UI</td>
-                </tr>
-                <tr>
-                    <td>OpenAI Agents SDK</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">OpenAI-native agent apps</td>
-                </tr>
-                <tr>
-                    <td>Semantic Kernel</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="color:var(--text-3);font-size:0.8rem;">C#/.NET enterprise agents</td>
-                </tr>
+            <tbody id="comparisonBody">
+                <!-- Populated by JS from frameworks.json -->
             </tbody>
         </table>
+        <div style="margin-top:0.75rem;font-size:11px;color:var(--text-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+            <span>Click any row to expand evidence, risks, and recommended use-case</span>
+            <a href="/methodology" style="color:var(--cyan);text-decoration:none;">View full methodology →</a>
+        </div>
     </div>
 </section>
 
@@ -1561,11 +1827,13 @@ messages = [{<span class="string">"role"</span>: <span class="string">"user"</sp
 <footer class="footer">
     <p style="margin-bottom:0.5rem;">
         <a href="/">AI Tools Report</a> · 
-        <a href="https://github.com/chillysbabybackribs/Clawdia">Clawdia GitHub</a> · 
-        <a href="/AGENTS_2026_SOURCES.md" download>View Sources</a>
+        <a href="/agents-2026">Agents 2026</a> · 
+        <a href="/methodology">Methodology</a> · 
+        <a href="/AGENTS_2026_SOURCES.md" download>Sources (38)</a> · 
+        <a href="/frameworks.json">Raw Data</a>
     </p>
-    <p>© 2026 AI Tools Report. All rights reserved. Updated: February 16, 2026.</p>
-    <p style="margin-top:0.5rem;font-size:0.7rem;color:var(--text-3);">All claims labeled CONFIRMED, INFERRED, or SPECULATIVE. This is competitive landscape intelligence, not investment advice.</p>
+    <p>© 2026 AI Tools Report. Index Model v0.1. Updated: February 16, 2026.</p>
+    <p style="margin-top:0.5rem;font-size:0.7rem;color:var(--text-3);">All claims labeled CONFIRMED, INFERRED, or SPECULATIVE. Indices scored per published <a href="/methodology" style="color:var(--text-3);">methodology</a>. This is competitive landscape intelligence, not investment advice.</p>
 </footer>
 
 <!-- ==================== SCRIPTS ==================== -->
@@ -1887,16 +2155,19 @@ new Chart(document.getElementById('chartRadar'), {
 });
 
 // ==================== POPULATE SCORE BARS IN TABLE ====================
-const radarData = {
-    'OpenClaw':        [3, 4, 4, 1, 5, 3],
-    'LangChain':       [3, 5, 3, 2, 4, 4],
-    'n8n / Make':      [2, 5, 2, 3, 4, 2],
-    'Clawdia':         [5, 3, 5, 5, 1, 5],
-    'AutoGen':         [3, 4, 4, 2, 3, 4],
-    'CrewAI':          [3, 3, 4, 2, 3, 3],
-    'Vercel AI SDK':   [3, 4, 2, 3, 4, 4],
-    'OpenAI Agents SDK': [4, 3, 4, 2, 4, 3],
-    'Semantic Kernel': [3, 4, 3, 3, 3, 4]
+// ==================== FRAMEWORKS DATA + INDEX LAYER ====================
+let FRAMEWORKS = [];
+
+const BEST_FOR = {
+    'openclaw': 'Rapid prototyping, coding agents',
+    'langchain': 'Complex chains, enterprise RAG',
+    'n8n-make': 'No-code automation, workflows',
+    'clawdia': 'Local-first autonomy, security-critical',
+    'autogen': 'Multi-agent research, Microsoft stack',
+    'crewai': 'Role-based multi-agent teams',
+    'vercel-ai-sdk': 'Next.js apps, streaming UI',
+    'openai-agents-sdk': 'OpenAI-native agent apps',
+    'semantic-kernel': 'C#/.NET enterprise agents'
 };
 
 function makeScoreBar(score) {
@@ -1904,19 +2175,240 @@ function makeScoreBar(score) {
     for (let i = 0; i < 5; i++) {
         html += `<span class="score-dot ${i < score ? 'filled' : 'empty'}"></span>`;
     }
-    html += `</span>`;
+    html += '</span>';
     return html;
 }
 
-document.querySelectorAll('.comparison-table tbody tr').forEach(row => {
-    const name = row.cells[0].textContent.trim();
-    const scores = radarData[name];
-    if (scores) {
-        for (let i = 0; i < 6; i++) {
-            row.cells[i + 1].innerHTML = makeScoreBar(scores[i]);
+function getGradeColor(grade) {
+    return { A: 'var(--green)', B: 'var(--cyan)', C: 'var(--amber)', D: 'var(--red)' }[grade] || 'var(--text-3)';
+}
+
+function getRiskColor(label) {
+    return { Low: 'var(--green)', Medium: 'var(--amber)', High: 'var(--rose)', Critical: 'var(--red)' }[label] || 'var(--text-3)';
+}
+
+function getMomentumColor(m) {
+    return { Rising: 'var(--green)', Stable: 'var(--cyan)', Declining: 'var(--red)' }[m] || 'var(--text-3)';
+}
+
+function buildIndexSnapshot(frameworks) {
+    const grid = document.getElementById('indexGrid');
+    if (!grid) return;
+    grid.innerHTML = frameworks.map(fw => {
+        const ami = fw.indices.AMI;
+        const ari = fw.indices.ARI;
+        const epi = fw.indices.EPI;
+        const isClawdia = fw.id === 'clawdia';
+        return `
+        <div class="idx-card">
+            <div class="idx-card-header">
+                <div>
+                    <span class="idx-fw-name">${fw.name}</span>
+                    ${isClawdia ? ' <span class="watch-badge">Project to Watch</span>' : ''}
+                </div>
+                <span class="idx-fw-cat">${fw.category}</span>
+            </div>
+            <div class="idx-scores">
+                <div class="idx-score-block">
+                    <div class="idx-score-label">AMI</div>
+                    <div class="idx-score-value idx-grade-${ami.grade}">${ami.score}</div>
+                    <div class="idx-score-tag" style="color:${getGradeColor(ami.grade)}">${ami.grade} · ${ami.confidence}</div>
+                </div>
+                <div class="idx-score-block">
+                    <div class="idx-score-label">ARI</div>
+                    <div class="idx-score-value idx-risk-${ari.riskLabel}">${ari.score}</div>
+                    <div class="idx-score-tag" style="color:${getRiskColor(ari.riskLabel)}">${ari.riskLabel} Risk</div>
+                </div>
+                <div class="idx-score-block">
+                    <div class="idx-score-label">EPI</div>
+                    <div class="idx-score-value idx-momentum-${epi.momentum}">${epi.score}</div>
+                    <div class="idx-score-tag" style="color:${getMomentumColor(epi.momentum)}">↗ ${epi.momentum}</div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function buildComparisonTable(frameworks) {
+    const tbody = document.getElementById('comparisonBody');
+    if (!tbody) return;
+    tbody.innerHTML = frameworks.map(fw => {
+        const r = fw.radarScores;
+        const ami = fw.indices.AMI;
+        const ari = fw.indices.ARI;
+        const epi = fw.indices.EPI;
+        const isClawdia = fw.id === 'clawdia';
+
+        // Main row
+        const mainRow = `<tr class="expand-trigger" data-fw="${fw.id}">
+            <td>${fw.name}${isClawdia ? ' <span class="watch-badge" style="margin-left:4px">Watch</span>' : ''}</td>
+            <td><span style="color:${getGradeColor(ami.grade)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${ami.score}</span> <span style="color:${getGradeColor(ami.grade)};font-size:10px;font-weight:600;">${ami.grade}</span></td>
+            <td><span style="color:${getRiskColor(ari.riskLabel)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${ari.score}</span> <span style="color:${getRiskColor(ari.riskLabel)};font-size:10px;">${ari.riskLabel}</span></td>
+            <td><span style="color:${getMomentumColor(epi.momentum)};font-weight:700;font-family:var(--font-mono);font-size:0.9rem;">${epi.score}</span> <span style="color:${getMomentumColor(epi.momentum)};font-size:10px;">↗${epi.momentum}</span></td>
+            <td>${makeScoreBar(r.reasoning)}</td>
+            <td>${makeScoreBar(r.ecosystem)}</td>
+            <td>${makeScoreBar(r.security)}</td>
+            <td>${makeScoreBar(r.autonomy)}</td>
+        </tr>`;
+
+        // Expander row
+        const topEvidence = [];
+        if (ami.evidence) ami.evidence.forEach(e => topEvidence.push(`<li>📄 <a href="${e.url}" style="color:var(--cyan);text-decoration:none;" target="_blank">${e.label}</a> (${e.date})</li>`));
+
+        const risks = ari.topRiskDrivers || [];
+        const mitigations = ari.mitigations || [];
+        const bestFor = BEST_FOR[fw.id] || fw.description;
+
+        const expandRow = `<tr class="fw-expander" data-fw-expand="${fw.id}">
+            <td colspan="8" class="fw-expander-cell">
+                <div class="fw-expander-inner">
+                    <div class="fw-exp-col">
+                        <h5>📊 Top Evidence</h5>
+                        <ul>${topEvidence.length ? topEvidence.join('') : '<li style="color:var(--text-3)">No direct evidence links</li>'}</ul>
+                    </div>
+                    <div class="fw-exp-col">
+                        <h5>⚠️ Top Risks</h5>
+                        <ul>${risks.slice(0,3).map(r => `<li style="color:var(--amber);">• ${r}</li>`).join('')}</ul>
+                    </div>
+                    <div class="fw-exp-col">
+                        <h5>✅ Recommended For</h5>
+                        <ul><li><strong>${bestFor}</strong></li></ul>
+                        <h5 style="margin-top:0.75rem;">🛡️ Mitigations</h5>
+                        <ul>${mitigations.slice(0,2).map(m => `<li style="color:var(--green);">→ ${m}</li>`).join('')}</ul>
+                    </div>
+                </div>
+                <div class="fw-idx-strip">
+                    <span class="fw-idx-mini">AMI: <span style="color:${getGradeColor(ami.grade)}">${ami.score} (${ami.grade})</span> · ${ami.confidence}</span>
+                    <span class="fw-idx-mini">ARI: <span style="color:${getRiskColor(ari.riskLabel)}">${ari.score} (${ari.riskLabel})</span></span>
+                    <span class="fw-idx-mini">EPI: <span style="color:${getMomentumColor(epi.momentum)}">${epi.score} (${epi.momentum})</span></span>
+                    ${fw.githubUrl ? `<a href="${fw.githubUrl}" target="_blank" style="font-family:var(--font-mono);font-size:11px;color:var(--cyan);text-decoration:none;padding:3px 10px;background:var(--surface-3);border-radius:4px;">GitHub →</a>` : ''}
+                </div>
+            </td>
+        </tr>`;
+
+        return mainRow + expandRow;
+    }).join('');
+
+    // Attach click handlers for expanders
+    tbody.querySelectorAll('.expand-trigger').forEach(row => {
+        row.addEventListener('click', () => {
+            const fwId = row.dataset.fw;
+            const expander = tbody.querySelector(`[data-fw-expand="${fwId}"]`);
+            const wasOpen = expander.classList.contains('open');
+            // Close all
+            tbody.querySelectorAll('.fw-expander').forEach(e => e.classList.remove('open'));
+            tbody.querySelectorAll('.expand-trigger').forEach(r => r.classList.remove('expanded'));
+            // Toggle
+            if (!wasOpen) {
+                expander.classList.add('open');
+                row.classList.add('expanded');
+            }
+        });
+    });
+}
+
+function buildMaturityRiskChart(frameworks) {
+    const ctx = document.getElementById('chartMaturityRisk');
+    if (!ctx) return;
+
+    const data = frameworks.map(fw => ({
+        x: fw.indices.AMI.score,
+        y: fw.indices.ARI.score,
+        r: Math.max(fw.indices.EPI.score / 8, 4),
+        name: fw.name,
+        id: fw.id
+    }));
+
+    const fwColors = {
+        'openclaw': COLORS.cyan,
+        'langchain': COLORS.green,
+        'n8n-make': COLORS.amber,
+        'clawdia': COLORS.purple,
+        'autogen': COLORS.rose,
+        'crewai': '#ff6b6b',
+        'vercel-ai-sdk': '#4ecdc4',
+        'openai-agents-sdk': '#45b7d1',
+        'semantic-kernel': '#96ceb4'
+    };
+
+    new Chart(ctx, {
+        type: 'bubble',
+        data: {
+            datasets: data.map(d => ({
+                label: d.name,
+                data: [{ x: d.x, y: d.y, r: d.r }],
+                backgroundColor: (fwColors[d.id] || COLORS.cyan) + '55',
+                borderColor: fwColors[d.id] || COLORS.cyan,
+                borderWidth: 2
+            }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 12, font: { size: 11 } } },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => {
+                            const d = data[ctx.datasetIndex];
+                            return `${d.name}: AMI ${d.x}, ARI ${d.y}, EPI ${Math.round(d.r * 8)}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'Agent Maturity Index (AMI) →', color: '#666', font: { size: 11 } },
+                    min: 0, max: 100,
+                    grid: { color: 'rgba(255,255,255,0.04)' }
+                },
+                y: {
+                    title: { display: true, text: '← Autonomy Risk Index (ARI)', color: '#666', font: { size: 11 } },
+                    min: 0, max: 100,
+                    reverse: false,
+                    grid: { color: 'rgba(255,255,255,0.04)' }
+                }
+            }
         }
-    }
-});
+    });
+}
+
+// Load frameworks.json and build everything
+fetch('/frameworks.json')
+    .then(r => r.json())
+    .then(data => {
+        FRAMEWORKS = data.frameworks;
+        buildIndexSnapshot(FRAMEWORKS);
+        buildComparisonTable(FRAMEWORKS);
+        buildMaturityRiskChart(FRAMEWORKS);
+
+        // Re-observe new fade-up elements
+        document.querySelectorAll('.idx-card').forEach(el => {
+            el.classList.add('fade-up');
+            fadeObserver2.observe(el);
+        });
+    })
+    .catch(err => {
+        console.error('Failed to load frameworks.json:', err);
+        document.getElementById('indexGrid').innerHTML = '<p style="color:var(--red);text-align:center;padding:2rem;">Failed to load index data. <a href="/frameworks.json" style="color:var(--cyan);">View raw data →</a></p>';
+    });
+
+const fadeObserver2 = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+// ==================== COPY CITATION ====================
+function copyCite(title) {
+    const cite = `"${title}" — AI Agent Landscape 2026, AI Tools Report, Feb 2026 Edition. https://ai-tools-report.vercel.app/agents-2026`;
+    navigator.clipboard.writeText(cite).then(() => {
+        event.target.textContent = '✓ Copied';
+        event.target.classList.add('copied');
+        setTimeout(() => {
+            event.target.textContent = '📋 Cite';
+            event.target.classList.remove('copied');
+        }, 2000);
+    });
+}
 
 // ==================== PLAYBOOK TABS ====================
 document.querySelectorAll('.playbook-tab').forEach(tab => {
