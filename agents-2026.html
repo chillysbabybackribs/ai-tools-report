@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agents & Autonomous Systems 2026 — AI Tools Landscape Report</title>
+    <meta name="description" content="Competitive landscape intelligence: OpenClaw, Anthropic agents, and local-first autonomous systems. February 2026 edition.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: dark; scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #e5e5e5;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #a1a1a1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .nav-link:hover { color: #fff; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #34d59a;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #5eeabc; }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(6, 182, 212, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(52, 213, 154, 0.3);
+            color: #34d59a;
+            background: rgba(52, 213, 154, 0.06);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #34d59a, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 680px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-item {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: #666;
+        }
+        .meta-item strong { color: #34d59a; }
+
+        /* Download Bar */
+        .download-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 2rem 3rem;
+        }
+
+        .dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .dl-btn-primary {
+            background: linear-gradient(135deg, #34d59a 0%, #0891b2 100%);
+            color: #000;
+        }
+        .dl-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(52, 213, 154, 0.25);
+        }
+
+        .dl-btn-secondary {
+            background: rgba(255,255,255,0.06);
+            color: #e5e5e5;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .dl-btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .dl-btn-icon { font-size: 18px; }
+
+        /* Stats Strip */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            background: rgba(255,255,255,0.04);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .stat-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #06b6d4;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        /* Sidebar TOC */
+        .toc {
+            position: sticky;
+            top: 84px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .toc-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .toc a {
+            display: block;
+            padding: 6px 12px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+            line-height: 1.4;
+        }
+
+        .toc a:hover {
+            color: #fff;
+            border-left-color: rgba(52, 213, 154, 0.3);
+        }
+
+        .toc a.active {
+            color: #34d59a;
+            border-left-color: #34d59a;
+            background: rgba(52, 213, 154, 0.04);
+        }
+
+        .toc a.toc-h2 { padding-left: 12px; font-weight: 500; }
+        .toc a.toc-h3 { padding-left: 28px; font-size: 12px; }
+
+        /* Main Content - Markdown Rendered */
+        .report-content {
+            min-width: 0;
+        }
+
+        .report-content h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            letter-spacing: -0.5px;
+        }
+
+        .report-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .report-content h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin: 2rem 0 0.75rem;
+        }
+
+        .report-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ccc;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .report-content p {
+            margin-bottom: 1rem;
+            color: #c5c5c5;
+        }
+
+        .report-content strong { color: #fff; }
+
+        .report-content a {
+            color: #34d59a;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 213, 154, 0.3);
+            transition: border-color 0.2s;
+        }
+        .report-content a:hover { border-bottom-color: #34d59a; }
+
+        .report-content ul, .report-content ol {
+            margin: 0 0 1.25rem 1.5rem;
+            color: #c5c5c5;
+        }
+
+        .report-content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .report-content blockquote {
+            border-left: 3px solid #06b6d4;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: rgba(6, 182, 212, 0.04);
+            border-radius: 0 8px 8px 0;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .report-content code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.88em;
+            background: rgba(255,255,255,0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #06b6d4;
+        }
+
+        .report-content pre {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+
+        .report-content pre code {
+            background: none;
+            padding: 0;
+            color: #c5c5c5;
+        }
+
+        /* Tables */
+        .report-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 14px;
+        }
+
+        .report-content thead {
+            background: rgba(52, 213, 154, 0.08);
+        }
+
+        .report-content th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #34d59a;
+            border-bottom: 2px solid rgba(52, 213, 154, 0.2);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .report-content td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: #c5c5c5;
+        }
+
+        .report-content tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Confidence Labels */
+        .report-content em {
+            color: #888;
+        }
+
+        /* Horizontal Rules */
+        .report-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            margin: 3rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .footer a { color: #34d59a; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .toc { display: none; }
+            .hero { padding: 3rem 1.5rem 2rem; }
+            .download-bar { padding: 0 1rem 2rem; }
+            .header { padding: 0 1rem; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-meta { gap: 1rem; }
+            .dl-btn { padding: 10px 18px; font-size: 13px; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.06);
+            border-top-color: #34d59a;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">AI Tools Report</a>
+        <nav class="nav-menu">
+            <a href="/" class="nav-link">← Main Report</a>
+            <a href="#downloads" class="nav-link">Downloads</a>
+            <a href="https://github.com/chillysbabybackribs/Clawdia" target="_blank" class="nav-link">GitHub</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="badge">February 2026 Edition</div>
+        <h1>AI Tools Landscape 2026<br><span>Agents & Autonomous Systems</span></h1>
+        <p class="hero-sub">Competitive landscape intelligence covering OpenClaw, Anthropic agents, and the emergence of local-first autonomous systems. 722 lines of analysis with 38 citations.</p>
+        <div class="hero-meta">
+            <span class="meta-item"><strong>Version</strong> 1.0</span>
+            <span class="meta-item"><strong>Date</strong> Feb 16, 2026</span>
+            <span class="meta-item"><strong>Classification</strong> Landscape Intelligence</span>
+            <span class="meta-item"><strong>Sources</strong> 38 cited</span>
+        </div>
+    </section>
+
+    <!-- Downloads -->
+    <div class="download-bar" id="downloads">
+        <a href="/AGENTS_2026_UPDATE.md" download class="dl-btn dl-btn-primary">
+            <span class="dl-btn-icon">📄</span> Full Report (.md)
+        </a>
+        <a href="/AGENTS_2026_UPDATE.pdf" download class="dl-btn dl-btn-secondary">
+            <span class="dl-btn-icon">📑</span> PDF Export
+        </a>
+        <a href="/AGENTS_2026_SOURCES.md" download class="dl-btn dl-btn-secondary">
+            <span class="dl-btn-icon">📋</span> Sources & Citations
+        </a>
+        <a href="/AGENTS_2026_CHART_DATA.csv" download class="dl-btn dl-btn-secondary">
+            <span class="dl-btn-icon">📊</span> Chart Data (.csv)
+        </a>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="stats-strip">
+        <div class="stat-card">
+            <div class="stat-value">185K+</div>
+            <div class="stat-label">OpenClaw GitHub Stars</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">72.7%</div>
+            <div class="stat-label">Opus 4.6 OSWorld</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">512</div>
+            <div class="stat-label">OpenClaw Vulnerabilities</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">10K+</div>
+            <div class="stat-label">MCP Servers Live</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">40%</div>
+            <div class="stat-label">Enterprise Agent Adoption by EOY</div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Sidebar TOC -->
+        <aside class="toc" id="toc">
+            <div class="toc-title">Contents</div>
+            <!-- Generated by JS -->
+        </aside>
+
+        <!-- Report Body -->
+        <main class="report-content" id="report-content">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                Loading report…
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI Tools Landscape 2026 — Agents & Autonomous Systems Edition</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="/">Main Report</a> · 
+            <a href="https://github.com/chillysbabybackribs/Clawdia">Clawdia GitHub</a> · 
+            <a href="/AGENTS_2026_SOURCES.md" download>View Sources</a>
+        </p>
+        <p style="margin-top: 1rem; color: #444;">© 2026 AI Tools Report. Updated February 16, 2026.</p>
+    </footer>
+
+    <script>
+        // Fetch and render the markdown report
+        async function loadReport() {
+            try {
+                const resp = await fetch('/AGENTS_2026_UPDATE.md');
+                if (!resp.ok) throw new Error('Failed to load report');
+                const md = await resp.text();
+                
+                // Configure marked
+                marked.setOptions({
+                    gfm: true,
+                    breaks: false,
+                    headerIds: true,
+                    mangle: false
+                });
+
+                const html = marked.parse(md);
+                document.getElementById('report-content').innerHTML = html;
+
+                // Build TOC from rendered headings
+                buildTOC();
+
+                // Setup scroll spy
+                setupScrollSpy();
+
+            } catch (err) {
+                document.getElementById('report-content').innerHTML = `
+                    <div style="text-align:center; padding:4rem 2rem;">
+                        <p style="color:#ff6b6b; font-size:1.1rem; margin-bottom:1rem;">Failed to load report</p>
+                        <p style="color:#888;">Download the markdown file directly:</p>
+                        <a href="/AGENTS_2026_UPDATE.md" download style="color:#34d59a;">Download AGENTS_2026_UPDATE.md</a>
+                    </div>
+                `;
+            }
+        }
+
+        function buildTOC() {
+            const content = document.getElementById('report-content');
+            const toc = document.getElementById('toc');
+            const headings = content.querySelectorAll('h1, h2, h3');
+            
+            let tocHTML = '<div class="toc-title">Contents</div>';
+
+            headings.forEach((h, i) => {
+                // Create ID if missing
+                if (!h.id) {
+                    h.id = 'section-' + i;
+                }
+                
+                const level = h.tagName.toLowerCase();
+                // Skip the first h1 (title)
+                if (level === 'h1' && i === 0) return;
+                
+                const cls = level === 'h2' ? 'toc-h2' : level === 'h3' ? 'toc-h3' : 'toc-h2';
+                const text = h.textContent.replace(/\[.*?\]/g, '').trim();
+                
+                if (text.length > 0 && text.length < 80) {
+                    tocHTML += `<a href="#${h.id}" class="${cls}" data-target="${h.id}">${text}</a>`;
+                }
+            });
+
+            toc.innerHTML = tocHTML;
+        }
+
+        function setupScrollSpy() {
+            const tocLinks = document.querySelectorAll('.toc a[data-target]');
+            if (tocLinks.length === 0) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(l => l.classList.remove('active'));
+                        const active = document.querySelector(`.toc a[data-target="${entry.target.id}"]`);
+                        if (active) active.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+
+            document.querySelectorAll('.report-content h1[id], .report-content h2[id], .report-content h3[id]').forEach(h => {
+                observer.observe(h);
+            });
+        }
+
+        // Smooth scroll for TOC links
+        document.getElementById('toc').addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' && e.target.dataset.target) {
+                e.preventDefault();
+                const target = document.getElementById(e.target.dataset.target);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.replaceState(null, '', '#' + e.target.dataset.target);
+                }
+            }
+        });
+
+        // Load on page ready
+        loadReport();
+    </script>
+</body>
+</html>

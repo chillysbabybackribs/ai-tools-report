@@ -1,0 +1,88 @@
+chart_id,category,label,value,unit,source,confidence
+agent_adoption,market_data,Enterprise apps with AI agents (2024),5,percent,Gartner Aug 2025,CONFIRMED
+agent_adoption,market_data,Enterprise apps with AI agents (2026 projected),40,percent,Gartner Aug 2025,CONFIRMED
+agent_adoption,market_data,Enterprises deploying autonomous agents (2025),25,percent,Deloitte 2025,CONFIRMED
+agent_adoption,market_data,Enterprises deploying autonomous agents (2027 projected),50,percent,Deloitte 2025,CONFIRMED
+github_stars,openclaw_growth,OpenClaw Week 1 (Jan 2026),9000,stars,DigitalOcean Jan 2026,CONFIRMED
+github_stars,openclaw_growth,OpenClaw Week 2 (Jan 2026),60000,stars,DigitalOcean Jan 2026,CONFIRMED
+github_stars,openclaw_growth,OpenClaw Week 4 (Jan 2026),149000,stars,Adaptavist Feb 2026,CONFIRMED
+github_stars,openclaw_growth,OpenClaw Week 6 (Feb 2026),185000,stars,LinkedIn Cole Medin,CONFIRMED
+github_stars,framework_comparison,LangChain/LangGraph,100000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,Dify,60000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,AutoGen,40000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,LlamaIndex,40000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,CrewAI,25000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,Semantic Kernel,25000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,Haystack,18000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,OpenAI Agents SDK,15000,stars,GitHub Feb 2026,CONFIRMED
+github_stars,framework_comparison,Clawdia,1,stars,GitHub Feb 2026,CONFIRMED
+benchmarks,claude_opus_46,OSWorld (computer use),72.7,percent,Anthropic Feb 2026,CONFIRMED
+benchmarks,claude_opus_46,SWE-bench Verified,80.8,percent,Anthropic Feb 2026,CONFIRMED
+benchmarks,claude_opus_46,Terminal-Bench 2.0,65.4,percent,Anthropic Feb 2026,CONFIRMED
+benchmarks,claude_opus_46,Cybersecurity blind wins,95,percent,Anthropic Feb 2026,CONFIRMED
+model_pricing,input_cost,Claude Opus 4.6,5.00,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,input_cost,Claude Sonnet 4.5,3.00,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,input_cost,Claude Haiku 3.5,0.80,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,input_cost,GPT-5 (beta),10.00,usd_per_m_tokens,OpenAI Feb 2026,INFERRED
+model_pricing,input_cost,GPT-4.1,2.00,usd_per_m_tokens,OpenAI 2025,CONFIRMED
+model_pricing,input_cost,Gemini 3.0 Ultra,5.00,usd_per_m_tokens,Google 2026,INFERRED
+model_pricing,output_cost,Claude Opus 4.6,25.00,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,output_cost,Claude Sonnet 4.5,15.00,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,output_cost,Claude Haiku 3.5,4.00,usd_per_m_tokens,Anthropic Feb 2026,CONFIRMED
+model_pricing,output_cost,GPT-5 (beta),30.00,usd_per_m_tokens,OpenAI Feb 2026,INFERRED
+model_pricing,output_cost,GPT-4.1,8.00,usd_per_m_tokens,OpenAI 2025,CONFIRMED
+model_pricing,output_cost,Gemini 3.0 Ultra,15.00,usd_per_m_tokens,Google 2026,INFERRED
+security_comparison,vulnerabilities,OpenClaw (Jan 2026 audit),512,count,Kaspersky Feb 2026,CONFIRMED
+security_comparison,exposed_instances,OpenClaw (SecurityScorecard),40214,count,SecurityScorecard Feb 2026,CONFIRMED
+security_comparison,published_cves,OpenClaw,3,count,SecurityScorecard Feb 2026,CONFIRMED
+security_comparison,vulnerabilities,Clawdia,0,count,Source code inspection,CONFIRMED
+security_comparison,exposed_instances,Clawdia,0,count,Local-first architecture,CONFIRMED
+mcp_ecosystem,adoption,Active public MCP servers,10000,count,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,adoption,Claude enterprise connectors,75,count,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,platforms,ChatGPT MCP adoption,1,boolean,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,platforms,Cursor MCP adoption,1,boolean,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,platforms,Gemini MCP adoption,1,boolean,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,platforms,VS Code MCP adoption,1,boolean,Anthropic Dec 2025,CONFIRMED
+mcp_ecosystem,platforms,Copilot MCP adoption,1,boolean,Anthropic Dec 2025,CONFIRMED
+enterprise_deals,anthropic,Snowflake partnership,200,million_usd,Anthropic Dec 2025,CONFIRMED
+enterprise_deals,anthropic,Accenture multi-year partnership,0,undisclosed,Anthropic Dec 2025,CONFIRMED
+enterprise_deals,anthropic,ServiceNow default model,0,undisclosed,Forbes Feb 2026,CONFIRMED
+radar_scores,reasoning_depth,OpenClaw,3,score_1to5,Report analysis,INFERRED
+radar_scores,reasoning_depth,LangChain,3,score_1to5,Report analysis,INFERRED
+radar_scores,reasoning_depth,n8n/Make,2,score_1to5,Report analysis,INFERRED
+radar_scores,reasoning_depth,Clawdia,5,score_1to5,Report analysis,INFERRED
+radar_scores,ecosystem_integration,OpenClaw,4,score_1to5,Report analysis,INFERRED
+radar_scores,ecosystem_integration,LangChain,5,score_1to5,Report analysis,INFERRED
+radar_scores,ecosystem_integration,n8n/Make,5,score_1to5,Report analysis,INFERRED
+radar_scores,ecosystem_integration,Clawdia,3,score_1to5,Report analysis,INFERRED
+radar_scores,autonomy,OpenClaw,4,score_1to5,Report analysis,INFERRED
+radar_scores,autonomy,LangChain,3,score_1to5,Report analysis,INFERRED
+radar_scores,autonomy,n8n/Make,2,score_1to5,Report analysis,INFERRED
+radar_scores,autonomy,Clawdia,5,score_1to5,Report analysis,INFERRED
+radar_scores,security_model,OpenClaw,1,score_1to5,Report analysis,CONFIRMED
+radar_scores,security_model,LangChain,2,score_1to5,Report analysis,INFERRED
+radar_scores,security_model,n8n/Make,3,score_1to5,Report analysis,INFERRED
+radar_scores,security_model,Clawdia,5,score_1to5,Report analysis,CONFIRMED
+radar_scores,distribution,OpenClaw,5,score_1to5,Report analysis,CONFIRMED
+radar_scores,distribution,LangChain,4,score_1to5,Report analysis,CONFIRMED
+radar_scores,distribution,n8n/Make,4,score_1to5,Report analysis,INFERRED
+radar_scores,distribution,Clawdia,1,score_1to5,Report analysis,CONFIRMED
+radar_scores,developer_control,OpenClaw,3,score_1to5,Report analysis,INFERRED
+radar_scores,developer_control,LangChain,4,score_1to5,Report analysis,INFERRED
+radar_scores,developer_control,n8n/Make,2,score_1to5,Report analysis,INFERRED
+radar_scores,developer_control,Clawdia,5,score_1to5,Report analysis,CONFIRMED
+market_size,total_ai_market,2026,2.02,trillion_usd,Industry consensus,CONFIRMED
+market_size,openclaw_monthly_cost,2026,15000,usd,Yahoo Finance Feb 2026,CONFIRMED
+context_windows,model_comparison,Claude Opus 4.6,200000,tokens,Anthropic Feb 2026,CONFIRMED
+context_windows,model_comparison,Claude Sonnet 4.5,200000,tokens,Anthropic Feb 2026,CONFIRMED
+context_windows,model_comparison,GPT-5,256000,tokens,OpenAI 2026,INFERRED
+context_windows,model_comparison,GPT-4.1,128000,tokens,OpenAI 2025,CONFIRMED
+context_windows,model_comparison,Gemini 3.0 Ultra,1000000,tokens,Google 2026,INFERRED
+max_output,model_comparison,Claude Opus 4.6,128000,tokens,Anthropic Feb 2026,CONFIRMED
+max_output,model_comparison,Claude Sonnet 4.5,64000,tokens,Anthropic Feb 2026,CONFIRMED
+failure_scenarios,probability,OpenClaw security resolved,50,percent,Report analysis,SPECULATIVE
+failure_scenarios,probability,Anthropic loses framework race,50,percent,Report analysis,SPECULATIVE
+failure_scenarios,probability,Regulatory pressure hits agents,30,percent,Report analysis,SPECULATIVE
+failure_scenarios,probability,Agent frameworks commoditize,70,percent,Report analysis,SPECULATIVE
+failure_scenarios,probability,Local-first never scales,50,percent,Report analysis,SPECULATIVE
+failure_scenarios,probability,Inference costs collapse,60,percent,Report analysis,SPECULATIVE
